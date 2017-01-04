@@ -1,6 +1,10 @@
 <template>
     <div class="home">
-        <div class="session session1">session1</div>
+        <div class="session session1">session1
+          <a href="/#/product_detail/id">
+            了解更多
+          </a>
+        </div>
         <div class="session session2">session2</div>
         <div class="session session3">session3</div>
         <div class="session session4">session4</div>
@@ -37,6 +41,11 @@ export default {
     width: 1100px;
     height: 550px;
     background: yellowgreen;
+  }
+  .session1 a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
   }
   .session2 {
     width: 1100px;

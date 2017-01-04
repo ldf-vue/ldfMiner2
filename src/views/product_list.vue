@@ -18,7 +18,7 @@
                   <p class="normalPrice">￥15,500.00</p>
                   <p class="BTCPrice">（2.311 BTC）</p>
               </div>
-              <a href="" class="btn btnBuy">立即购买</a>
+              <a href="/#/product_detail/id" class="btn btnBuy">立即购买</a>
             </li>
           </ul>
         </div>

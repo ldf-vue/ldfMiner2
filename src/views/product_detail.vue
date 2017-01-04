@@ -17,6 +17,13 @@ export default {
     return {
       msg: 'product_detail.vue'
     }
+  },
+  // 响应路由参数的变化
+  watch: {
+    '$route' (to, from) {
+      // 对路由变化作出响应...
+      console.log('路由参数由' + from.params.id + '变为' + to.params.id)
+    }
   }
 }
 </script>

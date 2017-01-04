@@ -11,11 +11,14 @@
           </router-link>
         </li>
       </ul>
+      <Switchlan></Switchlan>
     </div>
   </div>
 </template>
 
 <script>
+import Switchlan from './Switchlan'
+
 export default {
   name: 'Headnav',
   data () {
@@ -38,8 +41,12 @@ export default {
   methods: {
     routeChange () {
       this.curHref = this.$route.name
+      if (this.curHref === 'product_detail') {
+        this.curHref = 'product_list'
+      }
     }
-  }
+  },
+  components: { Switchlan }
 }
 </script>
 

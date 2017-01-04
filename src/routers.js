@@ -11,7 +11,7 @@ const routers = [{
     require.ensure(['./views/product_list.vue'], () => { resolve(require('./views/product_list.vue')) })
   }
 }, {
-  path: '/product_detail',
+  path: '/product_detail/:id',
   name: 'product_detail',
   component (resolve) {
     require.ensure(['./views/product_detail.vue'], () => { resolve(require('./views/product_detail.vue')) })
