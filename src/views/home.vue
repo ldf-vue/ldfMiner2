@@ -2,7 +2,7 @@
     <div class="home">
         <div class="session session1">session1
           <a href="/#/product_detail/id">
-            了解更多
+            {{ $t("message.more") }}
           </a>
         </div>
         <div class="session session2">session2</div>

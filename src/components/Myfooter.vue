@@ -1,11 +1,12 @@
 <template>
   <div class="Myfooter">
 		<div class="footerWrap">
-			<div class="languageSwitch">
+            <Switchlan></Switchlan>
+			<!-- <div class="languageSwitch">
         <a class="en">English</a>
           /
         <a class="ch on">中文</a>
-      </div>
+      </div> -->
       <div class="linkLists">
         <div class="linkSection">
             <p class="linkTitle">About Us</p>
@@ -21,7 +22,6 @@
             <a href="/#/home" class="link">首页</a>
             <a href="/#/product_list" class="link">矿机</a>
             <a href="/#/config_info" class="link">配置说明</a>
-            <a href="/#/news" class="link">新闻</a>
         </div>
         <div class="linkSection linkSection_media">
             <p class="linkTitle">Contact Us</p>
@@ -35,13 +35,16 @@
 </template>
 
 <script>
+import Switchlan from './Switchlan'
+
 export default {
   name: 'Myfooter',
   data () {
     return {
       msg: 'This is the footer.vue'
     }
-  }
+  },
+  components: { Switchlan }
 }
 </script>
 

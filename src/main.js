@@ -6,6 +6,7 @@ import routes from './routers'
 import Headnav from './components/Headnav'
 import Myfooter from './components/Myfooter'
 import './assets/css/base.css'
+import './assets/js/lan-packs.js'
 
 Vue.use(VueRouter)
 // 实例化VueRouter
