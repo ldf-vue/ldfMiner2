@@ -3,11 +3,12 @@
 		<div class="left_large">
 			<img class="large_pic" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png">
 		</div>
-		<ul class="left_small">
-			<li v-for='detailPic in detailPics' class="small_pic">
+		<div class="left_small">
+			<label v-for='detailPic in detailPics' class="small_pic">
+			  <input type="radio" class="small_pic_input" v-model='pick_pic' value="index"></input>
 				<img :src='detailPic.url' class="small_pic_img">
-			</li>
-		</ul>
+			</label>
+		</div>
 	</div>
 </template>
 
@@ -16,7 +17,7 @@ export default {
   name: 'left',
   data () {
     return {
-
+      pick_pic: ''
     }
   },
   props: ['detailPics']
@@ -43,6 +44,13 @@ export default {
 .small_pic,.small_pic_img {
 	width: 86px;
 	height: 86px;
+}
+.small_pic_input {
+	/*opacity: 0;
+  outline: none;
+  position: absolute;
+  z-index: -1;
+  left: -999px;*/
 }
 .small_pic {
 	font-size: 0px;

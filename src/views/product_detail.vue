@@ -45,7 +45,7 @@ export default {
 
 <style scoped>
   .product_detail {
-    background-color: #f1f1f3;
+    background-color: #ffffff;
   }
   .detailWrap {
     width: 1100px;
