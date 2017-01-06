@@ -130,11 +130,12 @@ export default {
     height: 200px;
   }
   .session1 .learn_more {
-    border: 1px solid #b5b0b0;
     padding: 8px 30px;
     border-radius: 6px;
-    background: #f3f1f1;
     position: relative;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #333;
   }
   .session1 .learn_more:after {
     content: "";
