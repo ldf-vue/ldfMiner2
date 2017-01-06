@@ -17,18 +17,28 @@ export default {
     return {
       msg: 'product_detail.vue',
       detailPics: [
-        {url: 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'},
-        {url: 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'},
-        {url: 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'},
-        {url: 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'},
-        {url: 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'}
+        {url: '../../static/img/kj1.jpg'},
+        {url: '../../static/img/kj2.jpg'},
+        {url: '../../static/img/kj3.jpg'},
+        {url: '../../static/img/kj4.jpg'},
+        {url: '../../static/img/kj5.jpg'}
       ],
       detailText: {
         name: 'PandaMiner B1 Plus',
         hot: false,
         ifo: '最新PandaMiner B1 Plus矿机所采用核心GPU为RX480，更高算力更低功耗！',
-        price: '15,500.00',
-        price_bitcoin: '2.051'
+        prices: [
+          {
+            name: '矿机+电源',
+            rmb: '15,500.00',
+            btc: '2.243'
+          },
+          {
+            name: '矿机(无电源)',
+            rmb: '15,000.00',
+            btc: '2.167'
+          }
+        ]
       }
     }
   },
