@@ -8,6 +8,8 @@ import Myfooter from './components/Myfooter'
 import ElementUI from 'element-ui'
 import './assets/css/base.css'
 import 'element-ui/lib/theme-default/index.css'
+import './assets/js/lan-packs.js'
+import './vuex.js'
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)

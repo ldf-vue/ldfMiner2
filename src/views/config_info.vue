@@ -2,7 +2,7 @@
     <div class="config_info">
       <div class="configWrap">
         <div class="pageTitle">
-          <h1>配置说明</h1>
+          <h1>{{ $t("subTitle.instructions") }}</h1>
         </div>
         
         <div class="configInstruction">

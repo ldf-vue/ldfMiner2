@@ -1,37 +1,14 @@
 <template>
   <div class="Switchlan">
-    <p>{{ $t("message.hello") }}</p>
-    <button class="button" @click='changeLanguage("en")'>English</button>
-    <button class="button" @click='changeLanguage("cn")'>中文</button>
+    <a class="switch_btn" @click='changeLanguage("en")' :class='{"on":lan=="en"}'>English</a>
+    /
+    <a class="switch_btn" @click='changeLanguage("cn")' :class='{"on":lan=="cn"}'>中文</a>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import VueI18n from 'vue-i18n'
-
-// ready translated locales
-var locales = {
-  en: {
-    message: {
-      hello: 'hello world'
-    }
-  },
-  cn: {
-    message: {
-      hello: '你好世界'
-    }
-  }
-}
-// install plugin
-Vue.use(VueI18n)
-// set lang
-Vue.config.lang = 'cn'
-
-// set locales
-Object.keys(locales).forEach(function (lang) {
-  Vue.locale(lang, locales[lang])
-})
+import store from '../vuex.js'
 
 export default {
   name: 'Switchlan',
@@ -40,9 +17,18 @@ export default {
       msg: 'Switchlan.vue'
     }
   },
+  // 使用vuex的store同时控制头尾的语言切换
+  computed: {
+    lan: function () {
+      return store.state.lan
+    }
+  },
   methods: {
     changeLanguage (type) {
       Vue.config.lang = type
+      this.lan = type
+      store.commit('increment', type)
+      console.log(store.state.lan)
     }
   }
 }
@@ -52,7 +38,15 @@ export default {
 <style scoped>
   .Switchlan {
     position: absolute;
-    right: 10px;
-    top: 20px;
+    right: 0;
+    top: 10px;
+    color: #666;
+    font-size: 12px;
+  }
+  .Switchlan .switch_btn {
+    cursor: pointer;
+  }
+  .Switchlan .switch_btn.on {
+    color: #32c057;
   }
 </style>

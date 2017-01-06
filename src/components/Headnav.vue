@@ -1,23 +1,26 @@
 <template>
   <div class="Headnav">
-		<div class="navWrap">
+    <div class="navWrap">
       <a href="/#/home">
         <img src="../assets/logo.png" class="logoImg">
       </a>
       <ul>
         <li v-for="item in items" class="navItem">
           <router-link :to="{ name: item.href}" :class="{'on':item.href==curHref}">
-            <a>{{item.name}}</a>
+            <!-- <a>{{item.name}</a> -->
+            <a>{{ $t('nav['+item.number+'].name') }}</a>
           </router-link>
         </li>
       </ul>
       <Switchlan></Switchlan>
+      <Login></Login>
     </div>
   </div>
 </template>
 
 <script>
 import Switchlan from './Switchlan'
+import Login from './Login'
 
 export default {
   name: 'Headnav',
@@ -25,14 +28,15 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       items: [
-        {name: '首页', class: 'icon-zhuye', href: 'home'},
-        {name: '矿机', class: 'icon-kefu', href: 'product_list'},
-        {name: '配置说明', class: 'icon-jilu', href: 'config_info'},
-        {name: '新闻', class: 'icon-zhangdan1', href: 'news'},
-        {name: '关于', class: 'icon-zhangdan1', href: 'about'},
-        {name: 'FAQ', class: 'icon-zhangdan1', href: 'the_faq'}
+        {name: '首页', class: 'icon-zhuye', href: 'home', number: 0},
+        {name: '矿机', class: 'icon-kefu', href: 'product_list', number: 1},
+        {name: '配置说明', class: 'icon-jilu', href: 'config_info', number: 2},
+        // {name: '新闻', class: 'icon-zhangdan1', href: 'news'},
+        {name: '关于', class: 'icon-zhangdan1', href: 'about', number: 3},
+        {name: 'FAQ', class: 'icon-zhangdan1', href: 'the_faq', number: 4}
       ],
-      curHref: 'home'
+      curHref: 'home',
+      number: 0
     }
   },
   watch: {
@@ -44,9 +48,10 @@ export default {
       if (this.curHref === 'product_detail') {
         this.curHref = 'product_list'
       }
+      document.body.scrollTop = 0
     }
   },
-  components: { Switchlan }
+  components: { Switchlan, Login }
 }
 </script>
 
