@@ -1,22 +1,26 @@
 <template>
 	<div class="left">
+	<!-- 大图 -->
 		<div class="left_large">
-			<img class="large_pic" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png">
+			<img class="large_pic" :src='detailPics[pick_pic].url'>
 		</div>
-		<ul class="left_small">
-			<li v-for='detailPic in detailPics' class="small_pic">
+		<!-- 小图 -->
+		<div class="left_small">
+		<!-- 使用表单单选处理 -->
+			<label v-for='(detailPic,index) in detailPics' :id='index' class='small_pic' :class="{'pic_picked':index==pick_pic}">
+			  <input :value='index' type='radio' class='small_pic_input' v-model='pick_pic'/>
 				<img :src='detailPic.url' class="small_pic_img">
-			</li>
-		</ul>
+			</label>
+		</div>
 	</div>
 </template>
-
+ 
 <script>
 export default {
   name: 'left',
   data () {
     return {
-
+      pick_pic: '0'
     }
   },
   props: ['detailPics']
@@ -44,6 +48,13 @@ export default {
 	width: 86px;
 	height: 86px;
 }
+.small_pic_input {
+	opacity: 0;
+  outline: none;
+  position: absolute;
+  z-index: -1;
+  left: -999px;
+}
 .small_pic {
 	font-size: 0px;
 	margin: 0;
@@ -51,9 +62,10 @@ export default {
 	display: block;
 	margin: 10px 10px 0 0;
 }
-.pic_click {
+.pic_picked {
 	width: 84px;
 	height: 84px;
 	border: 2px solid #32c057;
+	overflow: hidden;
 }
 </style>
