@@ -26,7 +26,8 @@
                 </tr>
               </tbody>
             </table>
-            <a href="/#/product_detail/id" class="btn buyNow" :class="{'noComing':item.comingSoon}">{{ item.money }}</a>
+            <a href="javascript:void(0)" v-if="item.comingSoon" class="btn buyNow" :class="{'noComing':item.comingSoon}">{{ item.money }}</a>
+            <a href="/#/product_detail/id" v-else class="btn buyNow" :class="{'noComing':item.comingSoon}">{{ item.money }}</a>
           </li>
         </ul>
         <a href="/#/product_list" class="btnMoreProduct">了解更多商品</a>
