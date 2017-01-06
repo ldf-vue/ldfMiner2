@@ -8,19 +8,27 @@
 
 <script>
 import Vue from 'vue'
+import store from '../vuex.js'
 
 export default {
   name: 'Switchlan',
   data () {
     return {
-      msg: 'Switchlan.vue',
-      lan: 'cn'
+      msg: 'Switchlan.vue'
+    }
+  },
+  // 使用vuex的store同时控制头尾的语言切换
+  computed: {
+    lan: function () {
+      return store.state.lan
     }
   },
   methods: {
     changeLanguage (type) {
       Vue.config.lang = type
       this.lan = type
+      store.commit('increment', type)
+      console.log(store.state.lan)
     }
   }
 }

@@ -1,17 +1,17 @@
 <template>
     <div class="product_list">
         <div class="pageTitle">
-          <h1>矿机</h1>
+          <h1>{{ $t("subTitle.miners") }}</h1>
         </div>
         <div class="products">
           <ul>
             <li class="productItem" v-for="item in items">
-              <img src="../assets/logo.png" class="productImg">
+              <img :src="item.src" class="productImg">
               <div class="productInfo">
-                  <p class="productName">ldfMiner B1 Plus
+                  <p class="productName">ldfMiner B1 Plus</p>
                   <p class="productParams">
-                      <span class="param">显卡数量：8</span>
-                      <span class="param">核心显卡：RX480</span>
+                    <span class="param">显卡数量：8</span>
+                    <span class="param">核心显卡：RX480</span>
                   </p>
               </div>
               <div class="price">
@@ -32,8 +32,12 @@ export default {
     return {
       msg: 'product_list.vue',
       items: [
-        {},
-        {}
+        {
+          src: '../static/logo.png'
+        },
+        {
+          src: '../static/logo.png'
+        }
       ]
     }
   }
