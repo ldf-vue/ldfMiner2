@@ -63,3 +63,9 @@ a {color:inherit}
 
 .yellow {
   color: #febb08; }
+
+/*矿机单独样式*/
+body, html {
+  overflow-x: auto;
+  min-width: 1100px;
+}

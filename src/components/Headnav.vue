@@ -48,6 +48,7 @@ export default {
       if (this.curHref === 'product_detail') {
         this.curHref = 'product_list'
       }
+      document.body.scrollTop = 0
     }
   },
   components: { Switchlan, Login }
