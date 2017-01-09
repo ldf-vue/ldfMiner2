@@ -20,6 +20,7 @@ export default {
   name: 'left',
   data () {
     return {
+      // 用于获取选中小图索引从而渲染大图
       pick_pic: '0'
     }
   },
@@ -27,7 +28,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .left {
   width: 480px;
   height: 578px;
