@@ -1,21 +1,21 @@
 <template>
     <div class="home">
       <div class="session session1">
-        <a href="/#/product_detail/id">
+        <router-link :to="{ path: 'product_detail/id' }">
           <h1>{{ $t("homeContent.session1.title") }}</h1>
           <h3>{{ $t("homeContent.session1.subTitle") }}</h3>
           <span class="learn_more">{{ $t("homeContent.session1.lernMore") }}</span>
           <br />
           <img src="../assets/logo.png">
-        </a>
+        </router-link>
       </div>
       <div class="session session2">
         <h2>{{ $t("homeContent.session2.title") }}</h2>
         <ul>
           <li v-for="item in items">
-            <a href="/#/product_detail/id">
+            <router-link :to="{ path: 'product_detail/id' }">
               <img src="../assets/logo.png" alt="" class="productImg">
-            </a>
+            </router-link>
             <p class="productName">PandaMiner B1 Plus</p>
             <p class="productSlogan">性价比之选</p>
             <table class="productParamTable">
@@ -27,10 +27,10 @@
               </tbody>
             </table>
             <a href="javascript:void(0)" v-if="item.comingSoon" class="btn buyNow" :class="{'noComing':item.comingSoon}">{{ item.money }}</a>
-            <a href="/#/product_detail/id" v-else class="btn buyNow" :class="{'noComing':item.comingSoon}">{{ item.money }}</a>
+            <router-link :to="{ path: 'product_detail/id' }" v-else class="btn buyNow" :class="{'noComing':item.comingSoon}">{{ item.money }}</a>
           </li>
         </ul>
-        <a href="/#/product_list" class="btnMoreProduct">了解更多商品</a>
+        <router-link :to="{ path: 'product_list' }" class="btnMoreProduct">了解更多商品</a>
       </div>
       <div class="session session3">
         <h2>什么是显卡矿机？</h2>
