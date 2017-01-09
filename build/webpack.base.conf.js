@@ -16,6 +16,8 @@ module.exports = {
   },
   output: {
     path: config.build.assetsRoot,
+    // 打包后,如需在本地运行,需要更改publicPath的路径
+    // publicPath: './',
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
     filename: '[name].js'
   },

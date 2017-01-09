@@ -10,8 +10,8 @@
       <div class="linkLists">
         <div class="linkSection">
             <p class="linkTitle">About Us</p>
-            <a href="/#/about" class="link">{{ $t('nav[3].name') }}</a>
-            <a href="/#/the_faq" class="link">FAQ</a>
+            <router-link :to="{ path: 'about' }" class="link">{{ $t('nav[3].name') }}</router-link>
+            <router-link :to="{ path: 'the_faq' }" class="link">FAQ</router-link>
         </div>
         <div class="linkSection">
             <p class="linkTitle">Policy</p>
@@ -19,9 +19,9 @@
         </div>
         <div class="linkSection">
             <p class="linkTitle">Explore</p>
-            <a href="/#/home" class="link">{{ $t('nav[0].name') }}</a>
-            <a href="/#/product_list" class="link">{{ $t('nav[1].name') }}</a>
-            <a href="/#/config_info" class="link">{{ $t('nav[2].name') }}</a>
+            <router-link :to="{ path: 'home' }" class="link">{{ $t('nav[0].name') }}</router-link>
+            <router-link :to="{ path: 'product_list' }" class="link">{{ $t('nav[1].name') }}</router-link>
+            <router-link :to="{ path: 'config_info' }" class="link">{{ $t('nav[2].name') }}</router-link>
         </div>
         <div class="linkSection linkSection_media">
             <p class="linkTitle">Contact Us</p>

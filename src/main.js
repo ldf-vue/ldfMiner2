@@ -5,10 +5,13 @@ import VueRouter from 'vue-router'
 import routes from './routers'
 import Headnav from './components/Headnav'
 import Myfooter from './components/Myfooter'
+import ElementUI from 'element-ui'
 import './assets/css/base.css'
+import 'element-ui/lib/theme-default/index.css'
 import './assets/js/lan-packs.js'
 import './vuex.js'
 
+Vue.use(ElementUI)
 Vue.use(VueRouter)
 // 实例化VueRouter
 const router = new VueRouter({
