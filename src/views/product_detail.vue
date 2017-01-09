@@ -17,11 +17,12 @@ export default {
     return {
       msg: 'product_detail.vue',
       detailPics: [
-        {url: '../../static/img/kj1.jpg'},
-        {url: '../../static/img/kj2.jpg'},
-        {url: '../../static/img/kj3.jpg'},
-        {url: '../../static/img/kj4.jpg'},
-        {url: '../../static/img/kj5.jpg'}
+        // 此处把图片存放在static文件夹，需要注意，此处的打包后的路径问题
+        {url: 'static/img/kj1.jpg'},
+        {url: 'static/img/kj2.jpg'},
+        {url: 'static/img/kj3.jpg'},
+        {url: 'static/img/kj4.jpg'},
+        {url: 'static/img/kj5.jpg'}
       ],
       detailText: {
         name: 'PandaMiner B1 Plus',
