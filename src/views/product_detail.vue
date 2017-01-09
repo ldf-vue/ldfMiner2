@@ -1,12 +1,22 @@
 <template>
-    <div class="product_detail">
-      <div class="detailWrap">
-      	<!-- 左侧产品图展示模块 detail-pics用于传递数据 -->
-				<left :detail-pics='detailPics'></left>
-				<!-- 右侧信息展示模块 detail-text.sync双向绑定数据 -->
-				<right :detail-text.sync='detailText'></right>
-      </div>
-    </div>
+<div class="product_detail">
+	<div class="pageTitle">
+		<h2>{{ $t("subTitle.miners") }}</h2>
+  </div>
+  <div class="detailWrap">
+  	<!-- 左侧产品图展示模块 detail-pics用于传递数据 -->
+		<left :detail-pics='detailPics'></left>
+		<!-- 右侧信息展示模块 detail-text.sync双向绑定数据 -->
+		<right :detail-text.sync='detailText'></right>
+  </div>
+  <div class="details">
+  	<span class="details_title">产品详情</span>
+  </div>
+  <!-- 图文详情图片处理 单个图片自动居中独占一行 -->
+  <div class="details_ifo">
+  	<img v-for="detail in details" :src="detail">
+  </div>
+</div>
 </template>
 
 <script>
@@ -43,7 +53,12 @@ export default {
           }
         ],
         productNum: '1'
-      }
+      },
+      details: [
+        'static/img/xq1.jpg',
+        'static/img/xq2.jpg',
+        'static/logo.png'
+      ]
     }
   },
   // 组件注册
@@ -59,12 +74,35 @@ export default {
 </script>
 
 <style scoped>
-  .product_detail {
-    background-color: #ffffff;
-  }
-  .detailWrap {
-    width: 1100px;
-    height: 578px;
-    margin: 0 auto;
-  }
+.product_detail {
+  background-color: #ffffff;
+  width: 1100px;
+  margin: 0 auto;
+}
+.pageTitle {
+  font-size: 26px;
+  padding: 25px 0;
+}
+.detailWrap {
+  height: 578px;
+  margin-bottom: 50px
+}
+.details {
+	border-bottom: 1px solid #ccc;
+  height: 53px;
+}
+.details_title {
+	color: #32c057;
+	height: 50px;
+  line-height: 50px;
+  display: inline-block;
+  border-bottom: 3px solid #32c057;
+}
+.details_ifo {
+	margin: 20px 0 30px 0
+}
+.details_ifo img {
+	display: block;
+	margin: 0 auto
+}
 </style>

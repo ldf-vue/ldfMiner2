@@ -15,18 +15,21 @@
 	<!-- 规格 -->
 	<div class="product_choose">
 		<p class="product_choose_text">产品规格</p>
+    <!-- 这里采用左侧图片的处理方法 用选中的索引值去渲染价格数据 -->
 		<label v-for='(price,index) in detailText.prices' :id='index' class='product_btn' :class="{'choose_price':index==pick_price}">
-			  <input :value='index' type='radio' class='product_btn_input' v-model='pick_price'/>
-				<span>{{price.name}}</span>
-			</label>
+		  <input :value='index' type='radio' class='product_btn_input' v-model='pick_price'/>
+			<span>{{price.name}}</span>
+		</label>
 	</div>
 	<!-- 数量 -->
 	<div class="product_choose">
 		<p class="product_choose_text">台数</p>
+    <!-- 减少 -->
 		<span class="num_btn" @click='minus'>-</span>
 		<div class="choose_num_border">
 		  <input class="choose_num" min="1" v-model='detailText.productNum'></input>
 		</div>
+    <!-- 增加 -->
 		<span class="num_btn" @click='add'>+</span>
 	</div>
 	<span class="buy_btn" @click='buy'>立即购买</span>
@@ -54,6 +57,7 @@ export default {
     minus: function () {
       this.detailText.productNum > 1 ? this.productNum-- : this.productNum
     },
+    // 弹窗使用element-ui MessageBox
     buy: function () {
       console.log(this)
       this.$alert('联系客服：1234567890', '购买', {
@@ -64,7 +68,7 @@ export default {
 }
 </script>
 
-<style>
+<style  scoped>
 .right {
 	height: 388px;
 	width: 570px;
