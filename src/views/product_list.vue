@@ -18,7 +18,7 @@
                   <p class="normalPrice">￥15,500.00</p>
                   <p class="BTCPrice">（2.311 BTC）</p>
               </div>
-              <a href="/#/product_detail/id" class="btn btnBuy">立即购买</a>
+              <router-link :to="{ path: 'product_detail/id' }" class="btn btnBuy">立即购买</router-link>
             </li>
           </ul>
         </div>
@@ -33,10 +33,10 @@ export default {
       msg: 'product_list.vue',
       items: [
         {
-          src: '../static/logo.png'
+          src: 'static/logo.png'
         },
         {
-          src: '../static/logo.png'
+          src: 'static/logo.png'
         }
       ]
     }
