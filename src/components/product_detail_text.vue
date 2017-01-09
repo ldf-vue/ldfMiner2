@@ -25,7 +25,7 @@
 		<p class="product_choose_text">台数</p>
 		<span class="num_btn" @click='minus'>-</span>
 		<div class="choose_num_border">
-		  <input class="choose_num" min="1" v-model='productNum'></input>
+		  <input class="choose_num" min="1" v-model='detailText.productNum'></input>
 		</div>
 		<span class="num_btn" @click='add'>+</span>
 	</div>
@@ -43,17 +43,16 @@ export default {
   name: 'right',
   data () {
     return {
-      pick_price: '0',
-      productNum: '1'
+      pick_price: '0'
     }
   },
   props: ['detailText'],
   methods: {
     add: function () {
-      this.productNum++
+      this.detailText.productNum++
     },
     minus: function () {
-      this.productNum > 1 ? this.productNum-- : this.productNum
+      this.detailText.productNum > 1 ? this.productNum-- : this.productNum
     },
     buy: function () {
       console.log(this)
@@ -75,6 +74,17 @@ export default {
 	font-size: 32px;
   color: #333;
   margin-bottom: 10px
+}
+.product_hot {
+  padding: 0 12px;
+  height: 22px;
+  line-height: 22px;
+  color: #fff;
+  border-radius: 2px;
+  font-size: 14px;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #ff7611
 }
 .product_ifo {
 	font-size: 16px;

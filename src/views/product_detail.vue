@@ -1,8 +1,10 @@
 <template>
     <div class="product_detail">
       <div class="detailWrap">
+      	<!-- 左侧产品图展示模块 detail-pics用于传递数据 -->
 				<left :detail-pics='detailPics'></left>
-				<right :detail-text='detailText'></right>
+				<!-- 右侧信息展示模块 detail-text.sync双向绑定数据 -->
+				<right :detail-text.sync='detailText'></right>
       </div>
     </div>
 </template>
@@ -15,7 +17,6 @@ export default {
   name: 'product_detail',
   data () {
     return {
-      msg: 'product_detail.vue',
       detailPics: [
         {url: '../../static/img/kj1.jpg'},
         {url: '../../static/img/kj2.jpg'},
@@ -25,7 +26,8 @@ export default {
       ],
       detailText: {
         name: 'PandaMiner B1 Plus',
-        hot: false,
+        // hot为产品名后的‘热门’icon，boolean类型值，true为显示icon，false不显示
+        hot: true,
         ifo: '最新PandaMiner B1 Plus矿机所采用核心GPU为RX480，更高算力更低功耗！',
         prices: [
           {
@@ -38,10 +40,12 @@ export default {
             rmb: '15,000.00',
             btc: '2.167'
           }
-        ]
+        ],
+        productNum: '1'
       }
     }
   },
+  // 组件注册
   components: { left, right },
   // 响应路由参数的变化
   watch: {
