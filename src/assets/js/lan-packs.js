@@ -21,18 +21,6 @@ var locales = {
     subTitle: {
       miners: 'Miners',
       instructions: 'Instructions'
-    },
-    homeContent: {
-      session1: {
-        title: 'LDFMINER-WORL\'s 1ST AND Global Sales',
-        subTitle: 'Multi-Algorithm Mining | Only 100 Units for Batch 1',
-        lernMore: 'Learn More'
-      },
-      session2: {
-        title: 'Buy Now',
-        subTitle: '支持多币种挖矿 正式发售限量100台',
-        lernMore: '了解更多'
-      }
     }
   },
   // 中文
@@ -55,18 +43,6 @@ var locales = {
     subTitle: {
       miners: '矿机',
       instructions: '配置说明'
-    },
-    homeContent: {
-      session1: {
-        title: 'ldf矿机——全球首创，全球销售',
-        subTitle: '支持多币种挖矿 正式发售限量100台',
-        lernMore: '了解更多'
-      },
-      session2: {
-        title: '立即购买',
-        subTitle: '支持多币种挖矿 正式发售限量100台',
-        lernMore: '了解更多'
-      }
     }
   }
 }
@@ -79,3 +55,5 @@ Vue.config.lang = window.localStorage.getItem('lan') || 'cn'
 Object.keys(locales).forEach(function (lang) {
   Vue.locale(lang, locales[lang])
 })
+
+export { locales }
