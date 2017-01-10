@@ -66,6 +66,8 @@
 </template>
 
 <script>
+import '../assets/js/home-package.js'
+
 export default {
   name: 'app',
   data () {
