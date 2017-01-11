@@ -60,8 +60,16 @@ export default {
     // 弹窗使用element-ui MessageBox
     buy: function () {
       console.log(this)
-      this.$alert('联系客服：1234567890', '购买', {
-        confirmButtonText: '确定'
+      this.$prompt('咨询购买请联系我们，联系电话：1234567890。或者在下方给我们留言并注明您的联系方式，我们将竭诚为您服务！', '联系我们', {
+        showCancelButton: true,
+        cancelButtonText: '关闭',
+        confirmButtonText: '提交',
+        inputValidator: function ({value}) {}
+      }).then(({ value }) => {
+        this.$message({
+          type: 'success',
+          message: '我们已经收到您的留言，客服代表将会尽快与您取得联系！'
+        })
       })
     }
   }

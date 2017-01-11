@@ -48,6 +48,7 @@ export default {
   .faqWrap {
     width: 1100px;
     margin: 0 auto;
+    padding-bottom: 60px; 
   }
   .faqWrap .pageTitle {
     font-size: 26px;

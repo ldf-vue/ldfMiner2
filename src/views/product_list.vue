@@ -50,6 +50,7 @@ export default {
   .product_list {
     width: 1100px;
     margin: 0 auto;
+    padding-bottom: 60px
   }
   .pageTitle {
     font-size: 26px;
