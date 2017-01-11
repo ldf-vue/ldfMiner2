@@ -67,7 +67,7 @@ router的配置是在 router.js 中配置，官方文档：https://router.vuejs.
 **需注意在组件中需要跳往不同的路由时：使用 router-link 标签，不要使用 a 标签，否则打包时会遇到一些跳转的问题
 
 **router-link 标签：
-<router-link> 比起写死的 <a href="..."> 会好一些，理由如下：
+<router-link> 比起写死的 a 标签会好一些，理由如下：
 a. 无论是 HTML5 history 模式还是 hash 模式，它的表现行为一致，所以，当你要切换路由模式，或者在 IE9 降级使用 hash 模式，无须作任何变动。
 b. 在 HTML5 history 模式下，router-link 会拦截点击事件，让浏览器不在重新加载页面。
 c. 当你在 HTML5 history 模式下使用 base 选项之后，所有的 to 属性都不需要写（基路径）了。
@@ -212,10 +212,10 @@ store.commit('increment', type)   //改变
 
 本地资源的绝对路径问题：js html css 中的路径都不太一样
 
-js: 如果是 js 中配置图片路径，是不经过 webpack 打包的途径，即都是在 ./static 文件夹下的文件
+js: 如果是 js 中配置图片路径，即路径是字符串，是不经过 webpack 打包的途径，即都是在 ./static 文件夹下的文件
 
 html: 这里的图片路径经过 webpack 打包，没有什么问题
 
-css: 这里有问题，background-image 图片背景问题，打包出来后 static/img 文件夹下面有该文件，但就是找不到，需要更改路径为 '../../static' 才能找到图片
+css: 这里有问题，background-image 图片背景问题，打包出来后 static/img 文件夹下面有该文件，但就是找不到，需要更改路径为 '../../static' 才能找到图片（这个问题还未解决，猜测可能是把 vue 文件的 css 样式抽离出来了）
 
 **home.vue 中的 background 图片背景问题
