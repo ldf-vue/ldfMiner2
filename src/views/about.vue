@@ -36,6 +36,7 @@ export default {
   .aboutWrap {
     width: 1100px;
     margin: 0 auto;
+    padding-bottom: 60px;
   }
   .aboutWrap .logo {
     width: 268px;
