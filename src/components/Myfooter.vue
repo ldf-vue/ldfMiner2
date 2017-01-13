@@ -29,6 +29,16 @@
             <a href="https://twitter.com/ldfMiner_" class="link"><span class="mediaIcon i_media_t" target="_Blank"></span>@ldfMiner_</a>
             <a href="mailto:official@ldfminer.com" class="link"><span class="mediaIcon i_media_m"></span>official@lfdminer.com</a>
         </div>
+        <div class="linkSection linkSection_media dropline">
+          <p class="linkTitle">Drop Us A Line</p>
+          <el-input
+            type="textarea"
+            :rows="3"
+            placeholder="请留下您的需求和联系方式"
+            v-model="textarea">
+          </el-input>
+          <el-button size="small" class="input_message" v-on:click="msgSend">提交</el-button>
+        </div>
 	    </div>
 		</div>   
   </div>
@@ -41,10 +51,30 @@ export default {
   name: 'Myfooter',
   data () {
     return {
-      msg: 'This is the footer.vue'
+      msg: 'This is the footer.vue',
+      textarea: ''
     }
   },
-  components: { Switchlan }
+  components: { Switchlan },
+  methods: {
+    msgSend: function () {
+      var msg = this.textarea
+      if (msg) {
+        this.$http.post(
+          'http://www.yuxiulive.com/addmsg',
+          {
+            msg: msg
+          }
+        ).then(function (response) {
+          console.log(response.data)
+          console.log(1)
+        }, function (response) {
+          console.log(response.data)
+          console.log(2)
+        })
+      }
+    }
+  }
 }
 </script>
 
@@ -90,4 +120,7 @@ export default {
     font-size: 12px;
     margin-bottom: 10px;
 	}
+  .dropline {
+    width: 200px !important;
+  }
 </style>

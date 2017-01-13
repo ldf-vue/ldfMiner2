@@ -10,9 +10,11 @@ import './assets/css/base.css'
 import 'element-ui/lib/theme-default/index.css'
 import './assets/js/lan-packs.js'
 import './vuex.js'
+import vueResource from 'vue-resource'
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)
+Vue.use(vueResource)
 // 实例化VueRouter
 const router = new VueRouter({
   routes
