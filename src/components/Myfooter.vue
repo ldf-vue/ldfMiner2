@@ -58,19 +58,41 @@ export default {
   components: { Switchlan },
   methods: {
     msgSend: function () {
-      var msg = this.textarea
-      if (msg) {
-        this.$http.post(
-          'http://www.yuxiulive.com/addmsg',
-          {
-            msg: msg
+      var message = this.textarea
+      if (message) {
+        this.$http({
+          url: 'http://www.yuxiulive.com/app1/addmsg',
+          method: 'POST',
+          body: {
+            msg: message
+          },
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
           }
-        ).then(function (response) {
+        }).then(function (response) {
           console.log(response.data)
-          console.log(1)
+          // 提交成功提醒
+          this.$notify({
+            title: '提交成功',
+            message: '您的留言已提交成功，我们会尽快查看并处理',
+            type: 'success'
+          })
+          // 重置输入框内容
+          this.textarea = ''
         }, function (response) {
           console.log(response.data)
-          console.log(2)
+          // 提交失败提醒
+          this.$notify.error({
+            title: '提交失败',
+            message: '我们对此表示歉意，请检查您的网络或稍后再试'
+          })
+        })
+      } else {
+        // 空白消息提醒
+        this.$notify({
+          title: '提醒',
+          message: '请确认您的留言后再次提交',
+          type: 'warning'
         })
       }
     }
