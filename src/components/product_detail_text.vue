@@ -9,8 +9,8 @@
 	</p>
 	<p class="product_price">
 	  价格：
-	  <span class="price_rmb">¥{{detailText.prices[pick_price].rmb}}</span>
-	  <span class="price_bitcoin">( {{detailText.prices[pick_price].btc}} BTC )</span>
+	  <span class="price_rmb">¥ {{detailText.prices[pick_price].rmb}}</span>
+<!-- 	  <span class="price_bitcoin">( {{detailText.prices[pick_price].btc}} BTC )</span> -->
 	</p>
 	<!-- 规格 -->
 	<div class="product_choose">
@@ -70,7 +70,7 @@ export default {
           url: 'http://www.yuxiulive.com/app1/addmsg',
           method: 'POST',
           body: {
-            msg: value
+            'msg': value
           },
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

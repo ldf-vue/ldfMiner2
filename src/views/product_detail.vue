@@ -14,13 +14,16 @@
   </div>
   <!-- 图文详情图片处理 单个图片自动居中独占一行 -->
   <div class="details_ifo">
-    <h4 class="parameter">规格参数</h4>
-    <table class="details_table">
-    	<tr v-for="detail in details">
-        <td class="detail_td td_name">{{detail.name}}</td>
-        <td class="detail_td td_data">{{detail.data}}</td>
-      </tr>
-    </table>
+    <div v-if='parameter'>
+      <h4 class="parameter">规格参数</h4>
+      <table class="details_table">
+      	<tr v-for="detail in details">
+          <td class="detail_td td_name">{{detail.name}}</td>
+          <td class="detail_td td_data">{{detail.data}}</td>
+        </tr>
+      </table>
+    </div>
+    <img v-for='detailImage in detailImages' :src='detailImage.image' />
   </div>
 </div>
 </template>
@@ -35,78 +38,42 @@ export default {
     return {
       detailPics: [
         // 此处把图片存放在static文件夹，需要注意，此处的打包后的路径问题
-        {url: 'static/img/kj1.jpg'},
-        {url: 'static/img/kj2.jpg'},
-        {url: 'static/img/kj3.jpg'},
-        {url: 'static/img/kj4.jpg'},
-        {url: 'static/img/kj5.jpg'}
+        {url: 'static/img/mainGW1.webp'},
+        {url: 'static/img/mainGW3.webp'},
+        {url: 'static/img/mainGW4.webp'},
+        {url: 'static/img/mainGW2.webp'}
       ],
       detailText: {
-        name: 'PandaMiner B1 Plus',
+        name: '长城电源巨龙1250W',
         // hot为产品名后的‘热门’icon，boolean类型值，true为显示icon，false不显示
         hot: true,
-        ifo: '最新PandaMiner B1 Plus矿机所采用核心GPU为RX480，更高算力更低功耗！',
+        ifo: '80PLUS金牌,全模组/全电网宽幅设计,14厘米智能温控风扇,电力缓存系统',
         prices: [
           {
-            name: '矿机+电源',
-            rmb: '15,500.00',
-            btc: '2.243'
-          },
-          {
-            name: '矿机(无电源)',
-            rmb: '15,000.00',
-            btc: '2.167'
+            name: '1250W',
+            rmb: '950.00'
           }
         ],
-        productNum: '1'
+        // 购买数量 默认为1
+        productNum: 1
       },
-      details: [
-        {
-          name: '额定算力',
-          data: '13 TH / s的±5％'
-        },
-        {
-          name: '墙上功耗',
-          data: '1300瓦+12%（比特大陆APW3-1600瓦电源，AC / DC 93％的效率，25℃环境温度）'
-        },
-        {
-          name: '电源效率',
-          data: '0.1J/GH + 12%（墙上，AC / DC 93％的效率，25°C的环境温度）'
-        },
-        {
-          name: '额定电压',
-          data: '11.6~13.0V'
-        },
-        {
-          name: '芯片数量',
-          data: '189片 BM1387'
-        },
-        {
-          name: '外形尺寸',
-          data: '350毫米（L）*135毫米（W）*158毫米（H）'
-        },
-        {
-          name: '冷却',
-          data: '2×12038风扇'
-        },
-        {
-          name: '工作温度',
-          data: '25℃至40℃'
-        },
-        {
-          name: '工作湿度',
-          data: '5%RH-95%RH，非凝露'
-        },
-        {
-          name: '网络连接',
-          data: '以太网'
-        },
-        {
-          name: '电源连接方式',
-          data: '每块算力板三个PCIE接口都需要连接，推荐使用独立电源给整机供电，非独立电源情况下，3个算力板可以分别连接到不同的电源，但是每块算力板不能连接多个电源，并保证算力板最后通电'
-        }
+      parameter: false,
+      details: [ ],
+      detailImages: [
+        {image: 'static/img/detailGW1.jpg'},
+        {image: 'static/img/detailGW2.jpg'},
+        {image: 'static/img/detailGW3.jpg'},
+        {image: 'static/img/detailGW4.jpg'},
+        {image: 'static/img/detailGW5.jpg'},
+        {image: 'static/img/detailGW6.jpg'},
+        {image: 'static/img/detailGW7.jpg'},
+        {image: 'static/img/detailGW8.jpg'},
+        {image: 'static/img/detailGW9.jpg'},
+        {image: 'static/img/detailGW10.jpg'},
+        {image: 'static/img/detailGW11.jpg'},
+        {image: 'static/img/detailGW12.jpg'}
       ],
-      service_date: '180'
+      service_date: '1080'
     }
   },
   // 组件注册
@@ -170,7 +137,7 @@ export default {
   margin-left: -1px
 }
 .td_name {
-  width: 100px;
+  width: 150px;
 }
 .td_data {
   width: 650px;
