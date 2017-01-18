@@ -9,8 +9,8 @@
 	</p>
 	<p class="product_price">
 	  价格：
-	  <span class="price_rmb">¥{{detailText.prices[pick_price].rmb}}</span>
-	  <span class="price_bitcoin">( {{detailText.prices[pick_price].btc}} BTC )</span>
+	  <span class="price_rmb">¥ {{detailText.prices[pick_price].rmb}}</span>
+<!-- 	  <span class="price_bitcoin">( {{detailText.prices[pick_price].btc}} BTC )</span> -->
 	</p>
 	<!-- 规格 -->
 	<div class="product_choose">
@@ -27,7 +27,7 @@
     <!-- 减少 -->
 		<span class="num_btn" @click='minus'>-</span>
 		<div class="choose_num_border">
-		  <input class="choose_num" min="1" v-model='detailText.productNum'></input>
+		  <input class="choose_num" min="1" v-model='detailText.productNum' @blur="checkInput"></input>
 		</div>
     <!-- 增加 -->
 		<span class="num_btn" @click='add'>+</span>
@@ -55,7 +55,7 @@ export default {
       this.detailText.productNum++
     },
     minus: function () {
-      this.detailText.productNum > 1 ? this.productNum-- : this.productNum
+      this.detailText.productNum > 1 ? this.detailText.productNum-- : this.detailText.productNum
     },
     // 弹窗使用element-ui MessageBox
     buy: function () {
@@ -66,11 +66,43 @@ export default {
         confirmButtonText: '提交',
         inputValidator: function ({value}) {}
       }).then(({ value }) => {
-        this.$message({
-          type: 'success',
-          message: '我们已经收到您的留言，客服代表将会尽快与您取得联系！'
+        this.$http({
+          url: 'http://www.yuxiulive.com/app1/addmsg',
+          method: 'POST',
+          body: {
+            'msg': value
+          },
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }).then(function (response) {
+          console.log(response.data)
+          // 提交成功提醒
+          this.$notify({
+            title: '提交成功',
+            message: '您的留言已提交成功，我们会尽快查看并处理',
+            type: 'success'
+          })
+        }, function (response) {
+          console.log(response.data)
+          // 提交失败提醒
+          this.$notify.error({
+            title: '提交失败',
+            message: '我们对此表示歉意，请检查您的网络或稍后再试'
+          })
         })
       })
+    },
+    // 检查台数合法性
+    checkInput: function () {
+      if (this.detailText.productNum < 1) {
+        this.$message({
+          showClose: true,
+          message: '不能少于1台',
+          type: 'warning'
+        })
+        this.detailText.productNum = 1
+      }
     }
   }
 }
@@ -142,7 +174,8 @@ export default {
   border-radius: 4px;
   border: 1px solid #ccc;
   color: #333;
-  margin-right: 10px
+  margin-right: 10px;
+  user-select: none;
 }
 .product_btn_input {
 	opacity: 0;
@@ -168,6 +201,7 @@ export default {
   vertical-align: top;
   margin-right: 10px;
   cursor: pointer;
+  user-select: none;
 }
 .choose_num_border {
   width: 78px;
@@ -202,5 +236,6 @@ export default {
   text-align: center;
   display: inline-block;
   cursor: pointer;
+  user-select: none;
 }
 </style>
