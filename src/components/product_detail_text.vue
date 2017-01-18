@@ -27,7 +27,7 @@
     <!-- 减少 -->
 		<span class="num_btn" @click='minus'>-</span>
 		<div class="choose_num_border">
-		  <input class="choose_num" min="1" v-model='detailText.productNum'></input>
+		  <input class="choose_num" min="1" v-model='detailText.productNum' @blur="checkInput"></input>
 		</div>
     <!-- 增加 -->
 		<span class="num_btn" @click='add'>+</span>
@@ -92,6 +92,17 @@ export default {
           })
         })
       })
+    },
+    // 检查台数合法性
+    checkInput: function () {
+      if (this.detailText.productNum < 1) {
+        this.$message({
+          showClose: true,
+          message: '不能少于1台',
+          type: 'warning'
+        })
+        this.detailText.productNum = 1
+      }
     }
   }
 }

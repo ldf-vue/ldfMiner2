@@ -12,7 +12,7 @@
   <div class="details">
   	<span class="details_title">产品详情</span>
   </div>
-  <!-- 图文详情图片处理 单个图片自动居中独占一行 -->
+  <!-- 图文详情表格和图片处理 单个图片自动居中独占一行 -->
   <div class="details_ifo">
     <div v-if='parameter'>
       <h4 class="parameter">规格参数</h4>
@@ -24,6 +24,12 @@
       </table>
     </div>
     <img v-for='detailImage in detailImages' :src='detailImage.image' />
+    <div class="sold_ifo">
+      <h4 class="parameter">注意事项</h4>1. 机器变形或者部件脱落，请不要通电，联系售后处理。<br><br>2. 在安装或维护时请先装矿机断电，再进行维护。<br><br>3. 接线时一定要注意电源线的方向,接反会引起电源或矿机故障。<br><br>4.注意防尘防潮，以免影响矿机正常工作。<br><br>5. 当电源的实际输出达不到矿机所需求时，算力会提升不上去。
+    </div>
+    <div class="sold_ifo">
+      <h4 class="parameter">售后说明</h4>1）投资需谨慎，本显卡矿机一经售出，不支持退款或退货；<br>2）到货后180天内支持返修；<br>3）矿机价格可能会根据市场情况调整而不做事先通知和价格补偿，敬请谅解；<br><br><br>对于以下情况不支持返修：<br>1.买家私自拆卸，改装元器件；<br>2.在到货后，遭遇天气等自然灾害受损；<br>3.进水、电路板和元器件受潮、出现腐蚀造成的损坏；<br>4.买家另行购买劣质电源造成的损坏；<br>5.电路板存在毁痕迹的或者芯片被烧毁的；<br>6.一切由买家自行造成的损坏；<br><br><br>如果您有其他任何疑问可咨询：<br>电话: 18617127006
+    </div>
   </div>
 </div>
 </template>
@@ -83,6 +89,9 @@ export default {
     '$route' (to, from) {
       // 对路由变化作出响应...
       console.log('路由参数由' + from.params.id + '变为' + to.params.id)
+    },
+    detailText: function () {
+      console.log(this)
     }
   }
 }
@@ -127,7 +136,7 @@ export default {
 .parameter {
   text-align: center;
   font-size: 26px;
-  margin-bottom: 15px 
+  margin-bottom: 30px 
 }
 /*表格*/
 .detail_td {
@@ -141,5 +150,12 @@ export default {
 }
 .td_data {
   width: 650px;
+}
+/*注意事项*/
+.sold_ifo {
+  margin: 0 auto;
+  width: 600px;
+  padding: 30px 50px 50px 50px;
+  border: 1px solid #e5e5e5
 }
 </style>

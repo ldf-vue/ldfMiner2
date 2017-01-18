@@ -13,8 +13,9 @@ import './vuex.js'
 import vueResource from 'vue-resource'
 
 Vue.use(ElementUI)
-Vue.use(VueRouter)
 Vue.use(vueResource)
+Vue.http.options.emulateJSON = true
+Vue.use(VueRouter)
 // 实例化VueRouter
 const router = new VueRouter({
   routes
