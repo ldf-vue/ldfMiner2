@@ -67,10 +67,11 @@ export default {
         inputValidator: function ({value}) {}
       }).then(({ value }) => {
         this.$http({
-          url: 'http://www.yuxiulive.com/app1/addmsg',
+          url: 'http://www.lingyun.party/app1/addmsg',
           method: 'POST',
           body: {
-            'msg': value
+            msg: value,
+            phone: ''
           },
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

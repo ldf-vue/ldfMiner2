@@ -85,7 +85,7 @@ export default {
         if (this.phone) {
           this.input = true
           this.$http({
-            url: 'http://www.yuxiulive.com/app1/addmsg',
+            url: 'http://www.lingyun.party/app1/addmsg',
             method: 'POST',
             body: {
               msg: this.msg,
