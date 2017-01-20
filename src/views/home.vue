@@ -57,11 +57,13 @@
         </div>
       </div>
       <div class="session session4">
-        <p class="logo">Panda Miner</p>
-        <div class="content">
-          <h2>我们是谁？</h2>
-          <h3>全球首家专业显卡矿机制造商 提供虚拟货币算法解决方案</h3>
-          <p>熊猫矿机是一家全球领先的加密货币硬件设备专业制造商，伴随着规模日益扩大的虚拟币采矿业，集合了众多行业内专业人士，组建成一支全方位的团队，在半年内研发出适用于多种虚拟货币的显卡矿机。未来我们将会不断优化产品方案，以满足日新月异的挖矿需求。我们的愿景是将熊猫矿机打造成为虚拟币硬件设备全球第一品牌。</p>
+        <div class="subSession4">
+          <p class="logo">Panda Miner</p>
+          <div class="content">
+            <h2>我们是谁？</h2>
+            <h3>全球首家专业显卡矿机制造商 提供虚拟货币算法解决方案</h3>
+            <p>熊猫矿机是一家全球领先的加密货币硬件设备专业制造商，伴随着规模日益扩大的虚拟币采矿业，集合了众多行业内专业人士，组建成一支全方位的团队，在半年内研发出适用于多种虚拟货币的显卡矿机。未来我们将会不断优化产品方案，以满足日新月异的挖矿需求。我们的愿景是将熊猫矿机打造成为虚拟币硬件设备全球第一品牌。</p>
+          </div>
         </div>
       </div>
     </div>
@@ -293,10 +295,14 @@ export default {
   }
 
   .session4 {
-    width: 1100px;
+    /*width: 1100px;*/
     height: 505px;
     background-color: #f9f9f9;
     padding-top: 95px
+  }
+  .subSession4 {
+    width: 1100px;
+    margin: 0 auto;
   }
   .session4 .logo {
     background-image: url(../assets/logo.png);
