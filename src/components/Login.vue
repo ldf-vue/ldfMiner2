@@ -1,6 +1,7 @@
 <template>
   <div class="Login">
-    <div class="account_login">
+    <div class="account_login" v-if="loginBtn">
+      <!-- ======================注册======================== -->
       <a href="javascript:void(0)" class="btn" id="regist_btn" @click="registerBox = true">{{ $t("login.register") }}</a>
         <el-dialog title='注册' v-model='registerBox' size='tiny'>
           <el-form :model='userData'>
@@ -19,6 +20,7 @@
             <el-button type="primary" @click="register" :loading="loading">注 册</el-button>
           </div>
         </el-dialog>
+      <!-- =====================登录========================= -->
       <a href="javascript:void(0)" class="btn" id="login_btn" @click="loginBox = true">{{ $t("login.login") }}</a>
         <el-dialog title='登录' v-model='loginBox' size='tiny'>
           <el-form :model='userData'>
@@ -34,6 +36,19 @@
             <el-button type="primary" @click="login" :loading="loading">登 陆</el-button>
           </div>
         </el-dialog>
+    </div>
+    <div class="user_ifo" v-if="userIfo">
+      <el-dropdown trigger="click">
+        <span class="el-dropdown-link">
+          {{userData.name}}<i class="el-icon-caret-bottom el-icon--right"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>订单查询</el-dropdown-item>
+          <el-dropdown-item>系统通知</el-dropdown-item>
+          <el-dropdown-item>资料修改</el-dropdown-item>
+          <el-dropdown-item>退 出</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </div>
   </div>
 </template>
@@ -51,7 +66,9 @@ export default {
         passwordRepeat: ''
       },
       formLabelWidth: '80px',
-      loading: false
+      loading: false,
+      loginBtn: true,
+      userIfo: false
     }
   },
   methods: {
@@ -74,7 +91,6 @@ export default {
                 },
                 method: 'POST'
               }).then(function (response) {
-                console.log(response.data.re)
                 if (response.data.code === 1) {
                   this.$notify({
                     title: '注册成功',
@@ -158,7 +174,8 @@ export default {
               })
               this.loginBox = false
               this.loading = false
-              that.name = ''
+              this.loginBtn = false
+              this.userIfo = true
               that.password = ''
             } else {
               this.$message({
@@ -193,6 +210,17 @@ export default {
         this.loading = false
       }
     }
+  },
+  created: function () {
+    this.$http.get(
+      'http://www.yuxiulive.com/app1/checkLogin'
+    ).then(function (response) {
+      if (response.body.code === 1) {
+        this.userData.name = response.body.name
+        this.loginBtn = false
+        this.userIfo = true
+      }
+    })
   }
 }
 </script>
@@ -226,5 +254,8 @@ export default {
     background-color: #fff;
     border: 1px solid #ccc;
     color: #333;
+  }
+  .user_ifo {
+    padding: 10px 10px 0 0
   }
 </style>

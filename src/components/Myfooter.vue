@@ -29,7 +29,7 @@
             <a href="https://twitter.com/ldfMiner_" class="link"><span class="mediaIcon i_media_t" target="_Blank"></span>@ldfMiner_</a>
             <a href="mailto:official@ldfminer.com" class="link"><span class="mediaIcon i_media_m"></span>official@lfdminer.com</a>
         </div>
-        <div class="linkSection linkSection_media dropline">
+        <!-- <div class="linkSection linkSection_media dropline">
           <p class="linkTitle">Drop Us A Line</p>
           <el-input
             type="textarea"
@@ -38,6 +38,24 @@
             v-model="textarea">
           </el-input>
           <el-button size="small" class="input_message" v-on:click="msgSend">提交</el-button>
+        </div> -->
+        <div class="leave_msg">
+          <div class="msg_box_head">
+            <span class="msg_box_title">在线留言</span>
+            <span class="msg_box_icon" :class="{'msg_icon_on': icon}" @click='openMsgBox'>+</span>
+          </div>
+          <div class="msg_box" v-if="msgBox">
+            <el-input
+              type="textarea"
+              :rows="3"
+              placeholder="请再此输入您的留言（必填）"
+              v-model="msg">
+            </el-input>
+            <el-input v-model="name" placeholder="姓名" class="msg_input"></el-input>
+            <el-input v-model="phone" placeholder="电话（必填）" class="msg_input" type="tel"></el-input>
+            <el-input v-model="email" placeholder="邮箱" class="msg_input" type="email"></el-input>
+            <el-button type="success" :loading="input" class="input_btn" @click="msgSend">提 交</el-button>
+          </div>
         </div>
 	    </div>
 		</div>   
@@ -51,50 +69,85 @@ export default {
   name: 'Myfooter',
   data () {
     return {
-      msg: 'This is the footer.vue',
-      textarea: ''
+      msg: '',
+      name: '',
+      phone: '',
+      email: '',
+      icon: false,
+      msgBox: false,
+      input: false
     }
   },
   components: { Switchlan },
   methods: {
     msgSend: function () {
-      var message = this.textarea
-      if (message) {
-        this.$http({
-          url: 'http://www.yuxiulive.com/app1/addmsg',
-          method: 'POST',
-          body: {
-            msg: message
-          },
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        }).then(function (response) {
-          console.log(response.data)
-          // 提交成功提醒
+      if (this.msg) {
+        if (this.phone) {
+          this.input = true
+          this.$http({
+            url: 'http://www.yuxiulive.com/app1/addmsg',
+            method: 'POST',
+            body: {
+              msg: this.msg,
+              name: this.name,
+              phone: this.phone,
+              email: this.email
+            },
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+          }).then(function (response) {
+            // 提交成功提醒
+            if (response.data.code === 1) {
+              this.$notify({
+                title: '提交成功',
+                message: '您的留言已提交成功，我们会尽快查看并处理',
+                type: 'success'
+              })
+              // 重置数据
+              this.msg = ''
+              this.name = ''
+              this.phone = ''
+              this.email = ''
+              this.icon = false
+              this.msgBox = false
+              this.input = false
+            } else {
+              this.$notify.error({
+                title: '提交失败',
+                message: '我们对此表示歉意，请检查您的网络或稍后再试'
+              })
+              this.input = false
+            }
+          }, function (response) {
+            this.input = false
+            // 提交失败提醒
+            this.$notify.error({
+              title: '提交失败',
+              message: '我们对此表示歉意，请检查您的网络或稍后再试'
+            })
+            this.input = false
+          })
+        } else {
           this.$notify({
-            title: '提交成功',
-            message: '您的留言已提交成功，我们会尽快查看并处理',
-            type: 'success'
+            title: '电话不能为空',
+            message: '请留下您的联系方式，方便我们能联系到您',
+            type: 'warning'
           })
-          // 重置输入框内容
-          this.textarea = ''
-        }, function (response) {
-          console.log(response.data)
-          // 提交失败提醒
-          this.$notify.error({
-            title: '提交失败',
-            message: '我们对此表示歉意，请检查您的网络或稍后再试'
-          })
-        })
+        }
       } else {
         // 空白消息提醒
         this.$notify({
-          title: '提醒',
-          message: '请确认您的留言后再次提交',
+          title: '留言不能为空',
+          message: '请填写您的留言，我们会尽快为您解答',
           type: 'warning'
         })
       }
+    },
+    openMsgBox: function () {
+      console.log(this.icon)
+      this.icon = !this.icon
+      this.msgBox = !this.msgBox
     }
   }
 }
@@ -144,5 +197,50 @@ export default {
 	}
   .dropline {
     width: 200px !important;
+  }
+  /*留言框*/
+  .leave_msg {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 220px;
+    user-select: none;
+  }
+  .msg_box_head {
+    height: 30px;
+    background: #32c057;
+    border-radius: 5px 5px 0 0;
+  }
+  .msg_box_title,.msg_box_icon {
+    color: #fff;
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    line-height: 30px
+  }
+  .msg_box_icon {
+    width: 30px;
+    font-size: 26px;
+    float: right;
+    cursor: pointer;
+  }
+  .msg_icon_on {
+    transform: rotate(45deg);
+  }
+  .msg_box {
+    width: 200px;
+    height: 243px;
+    padding: 10px;
+    background: #fafafa
+
+  }
+  .msg_input {
+    margin: 3px 0;
+  }
+  .input_btn {
+    float: right;
+    margin-top: 3px;
+    background: #32c057;
+    border: #32c057
   }
 </style>
