@@ -10,8 +10,11 @@ import './assets/css/base.css'
 import 'element-ui/lib/theme-default/index.css'
 import './assets/js/lan-packs.js'
 import './vuex.js'
+import vueResource from 'vue-resource'
 
 Vue.use(ElementUI)
+Vue.use(vueResource)
+Vue.http.options.emulateJSON = true
 Vue.use(VueRouter)
 // 实例化VueRouter
 const router = new VueRouter({
