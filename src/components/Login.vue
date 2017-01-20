@@ -38,7 +38,7 @@
         </el-dialog>
     </div>
     <div class="user_ifo" v-if="userIfo">
-      <el-dropdown trigger="click">
+      <el-dropdown trigger="click" @command='handleCommand'>
         <span class="el-dropdown-link">
           {{userData.name}}<i class="el-icon-caret-bottom el-icon--right"></i>
         </span>
@@ -46,7 +46,7 @@
           <el-dropdown-item>订单查询</el-dropdown-item>
           <el-dropdown-item>系统通知</el-dropdown-item>
           <el-dropdown-item>资料修改</el-dropdown-item>
-          <el-dropdown-item>退 出</el-dropdown-item>
+          <el-dropdown-item command='logout'>退 出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -67,7 +67,7 @@ export default {
       },
       formLabelWidth: '80px',
       loading: false,
-      loginBtn: true,
+      loginBtn: false,
       userIfo: false
     }
   },
@@ -83,7 +83,7 @@ export default {
             if (that.password === that.passwordRepeat) {
               // post请求
               this.$http({
-                url: 'http://www.yuxiulive.com/app1/reg',
+                url: 'http://www.lingyun.party/app1/reg',
                 body: {
                   name: that.name,
                   password: that.password,
@@ -155,11 +155,11 @@ export default {
     login: function () {
       this.loading = true
       var that = this.userData
-      // 注册
+      // 登录
       if (that.name) {
         if (that.password) {
           this.$http({
-            url: 'http://www.yuxiulive.com/app1/login',
+            url: 'http://www.lingyun.party/app1/login',
             body: {
               name: that.name,
               password: that.password
@@ -209,17 +209,40 @@ export default {
         })
         this.loading = false
       }
+    },
+    // 个人下拉菜单选中项
+    handleCommand (command) {
+      if (command === 'logout') {
+        // 注销登录
+        this.$http.get(
+          'http://www.lingyun.party/app1/logout'
+        ).then(function (response) {
+          this.$notify({
+            title: '注销成功',
+            message: '您的登录信息已成功注销！',
+            type: 'success'
+          })
+          this.loginBtn = true
+          this.userIfo = false
+          this.userData.name = ''
+        }, function (response) { })
+      }
     }
   },
+  // 登录态确认
   created: function () {
     this.$http.get(
-      'http://www.yuxiulive.com/app1/checkLogin'
+      'http://www.lingyun.party/app1/checkLogin'
     ).then(function (response) {
       if (response.body.code === 1) {
         this.userData.name = response.body.name
         this.loginBtn = false
         this.userIfo = true
+      } else {
+        this.loginBtn = true
       }
+    }, function () {
+      this.loginBtn = true
     })
   }
 }
