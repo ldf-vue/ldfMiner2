@@ -220,6 +220,10 @@ css: 这里有问题，background-image 图片背景问题，打包出来后 sta
 
 **home.vue 中的 background 图片背景问题
 
+
+目前解决方法：
+修改 webpack.prod.confic 文件 vue.extract = false 即可，即不再把 vue 文件的 css 样式抽离出来了
+
 页面暂缺：
 确认订单
 支付订单
