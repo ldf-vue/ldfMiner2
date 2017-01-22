@@ -33,26 +33,28 @@
         <router-link :to="{ path: 'product_list' }" class="btnMoreProduct">了解更多商品</a>
       </div>
       <div class="session session3">
-        <h2>什么是显卡矿机？</h2>
-        <div class="definition">
-          <p>显卡矿机是支持多种虚拟货币算法挖矿的挖矿装置。不同于普通显卡，显卡矿机是通过多张高配置显卡，定制化、高兼容的机箱，以及专业的矿机架等专门针对挖矿需求优化设计的设备组装而成。
-          </p>
-          <p>显卡矿机极具灵活性，能针对不同的虚拟货币运行不同的算法，做到一机多用。在比特币矿机更新换代速度日益放缓且价格日渐增高的今天，显卡矿机不失为更好的虚拟币投资选择。
-          </p>
+        <div class="subSession3">
+          <h2>什么是显卡矿机？</h2>
+          <div class="definition">
+            <p>显卡矿机是支持多种虚拟货币算法挖矿的挖矿装置。不同于普通显卡，显卡矿机是通过多张高配置显卡，定制化、高兼容的机箱，以及专业的矿机架等专门针对挖矿需求优化设计的设备组装而成。
+            </p>
+            <p>显卡矿机极具灵活性，能针对不同的虚拟货币运行不同的算法，做到一机多用。在比特币矿机更新换代速度日益放缓且价格日渐增高的今天，显卡矿机不失为更好的虚拟币投资选择。
+            </p>
+          </div>
+          <ul class="featureList">
+            <li class="featureItem">
+              <p class="compare">对比普通显卡挖矿</p>
+              <p class="feature">多张顶级配置显卡，更高算力更低功耗</p>
+            </li>
+            <li class="featureItem featureItem_center">
+              <p class="compare">对比比特币矿机挖矿</p>
+              <p class="feature">更短回本周期，全网算力攀升较缓和<br>可适用于多种虚拟加密货币算法</p>
+            </li>
+            <li class="featureItem">
+              <p class="uniqueFeature">高性价比，极低部署成本！</p>
+            </li>
+          </ul>
         </div>
-        <ul class="featureList">
-          <li class="featureItem">
-            <p class="compare">对比普通显卡挖矿</p>
-            <p class="feature">多张顶级配置显卡，更高算力更低功耗</p>
-          </li>
-          <li class="featureItem featureItem_center">
-            <p class="compare">对比比特币矿机挖矿</p>
-            <p class="feature">更短回本周期，全网算力攀升较缓和<br>可适用于多种虚拟加密货币算法</p>
-          </li>
-          <li class="featureItem">
-            <p class="uniqueFeature">高性价比，极低部署成本！</p>
-          </li>
-        </ul>
       </div>
       <div class="session session4">
         <p class="logo">Panda Miner</p>
@@ -232,11 +234,15 @@ export default {
     border-radius: 6px;
   }
   .session3 {
-    width: 1100px;
+    /*width: 1100px;*/
     /*background: #de4a4a;*/
     height: 700px;
-    position: relative;
     background: #333333 url(../assets/img/bg.jpg) 50% 50% no-repeat;
+  }
+  .subSession3 {
+    width: 1100px;
+    position: relative;
+    margin: 0 auto;
   }
   .session3 h2 {
     padding-top: 145px;
