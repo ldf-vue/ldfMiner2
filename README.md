@@ -218,6 +218,18 @@ html: 这里的图片路径经过 webpack 打包，没有什么问题
 
 css: 这里有问题，background-image 图片背景问题，打包出来后 static/img 文件夹下面有该文件，但就是找不到，需要更改路径为 '../../static' 才能找到图片（这个问题还未解决，猜测可能是把 vue 文件的 css 样式抽离出来了）
 
+#### vue-resource数据绑定问题
+
+vue-resource默认数据格式存在问题，建议在main.js中设置全局属性：
+
+```
+Vue.http.options.emulateJSON = true
+```
+
+#### Element-ui问题
+
+element-ui下拉菜单选项回调需使用command，不能使用click，并且需要在头部dropdown说明：@command=‘handleCommand’（详细参见文档）
+
 **home.vue 中的 background 图片背景问题
 
 
