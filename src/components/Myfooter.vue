@@ -63,7 +63,7 @@
         <div class="leaveMsg">
           <span class="leaveMsgBtn" @click='openMsgBox'>在<br>线<br>留<br>言</span>
           <el-dialog title='在线留言' v-model='msgBox' size='tiny'>
-          <el-form :model='data'>
+          <el-form>
             <el-input
               type="textarea"
               :rows="3"

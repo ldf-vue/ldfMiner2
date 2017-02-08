@@ -295,7 +295,7 @@ export default {
   .session4 {
     width: 1100px;
     height: 505px;
-    background-color: #f9f9f9;
+    /*background-color: #f9f9f9;*/
     padding-top: 95px
   }
   .session4 .logo {
