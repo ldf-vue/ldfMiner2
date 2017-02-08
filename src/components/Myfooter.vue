@@ -29,6 +29,7 @@
             <a href="https://twitter.com/ldfMiner_" class="link"><span class="mediaIcon i_media_t" target="_Blank"></span>@ldfMiner_</a>
             <a href="mailto:official@ldfminer.com" class="link"><span class="mediaIcon i_media_m"></span>official@lfdminer.com</a>
         </div>
+        <!-- fotter栏里 -->
         <!-- <div class="linkSection linkSection_media dropline">
           <p class="linkTitle">Drop Us A Line</p>
           <el-input
@@ -39,7 +40,8 @@
           </el-input>
           <el-button size="small" class="input_message" v-on:click="msgSend">提交</el-button>
         </div> -->
-        <div class="leave_msg">
+        <!-- 底部贴边 -->
+        <!-- <div class="leave_msg">
           <div class="msg_box_head">
             <span class="msg_box_title">在线留言</span>
             <span class="msg_box_icon" :class="{'msg_icon_on': icon}" @click='openMsgBox'>+</span>
@@ -56,6 +58,27 @@
             <el-input v-model="email" placeholder="邮箱" class="msg_input" type="email"></el-input>
             <el-button type="success" :loading="input" class="input_btn" @click="msgSend">提 交</el-button>
           </div>
+        </div> -->
+        <!-- 悬浮 -->
+        <div class="leaveMsg">
+          <span class="leaveMsgBtn" @click='openMsgBox'>在<br>线<br>留<br>言</span>
+          <el-dialog title='在线留言' v-model='msgBox' size='tiny'>
+          <el-form>
+            <el-input
+              type="textarea"
+              :rows="3"
+              placeholder="请再此输入您的留言（必填）"
+              v-model="msg">
+            </el-input>
+            <el-input v-model="name" placeholder="姓名" class="msg_input"></el-input>
+            <el-input v-model="phone" placeholder="电话（必填）" class="msg_input" type="tel"></el-input>
+            <el-input v-model="email" placeholder="邮箱" class="msg_input" type="email"></el-input>
+          </el-form>
+          <div slot="footer" class="dialog-footer">
+            <el-button @click="msgBox = false">取 消</el-button>
+            <el-button type="warning" @click="msgSend" :loading="input">提 交</el-button>
+          </div>
+        </el-dialog>
         </div>
 	    </div>
 		</div>   
@@ -199,19 +222,28 @@ export default {
     width: 200px !important;
   }
   /*留言框*/
-  .leave_msg {
+  .leaveMsgBtn {
     position: fixed;
     right: 0;
-    bottom: 0;
-    width: 220px;
+    bottom: 100px;
+    display: inline;
+    width: 30px;
+    height: 100px;
+    padding: 20px 0 15px 0;
+    text-align: center;
     user-select: none;
+    font-size: 16px;
+    background: #f8b600;
+    color: #fff;
+    border-radius: 7px 0 0px 7px;
+    cursor: pointer;
   }
-  .msg_box_head {
+/*  .msg_box_head {
     height: 30px;
     background: #32c057;
     border-radius: 5px 5px 0 0;
-  }
-  .msg_box_title,.msg_box_icon {
+  }*/
+  /*.msg_box_title,.msg_box_icon {
     color: #fff;
     display: inline-block;
     width: 80px;
@@ -233,14 +265,14 @@ export default {
     padding: 10px;
     background: #fafafa
 
-  }
+  }*/
   .msg_input {
     margin: 3px 0;
   }
-  .input_btn {
+/*  .input_btn {
     float: right;
     margin-top: 3px;
     background: #32c057;
     border: #32c057
-  }
+  }*/
 </style>

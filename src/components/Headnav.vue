@@ -77,27 +77,27 @@ export default {
 
   }
   .logoImg {
-    width: 215px;
-    height: 100px;
-   
+    width: 130px;
+    height: 130px;
+    margin-top: -15px 
   }
   .navWrap ul {
     position: absolute;
     top: 0;
-    left: 250px;
+    left: 180px;
   }
   .navWrap .navItem {
     float: left;
   }
   .navItem a {
     display: block;
-    font-size: 16px;
+    font-size: 18px;
     padding: 0 22px;
     line-height: 100px;
     height: 100px;
     color: #333;
   }
   .navItem .on a {
-    color: #32c057;
+    color: #f8b600;
   }
 </style>

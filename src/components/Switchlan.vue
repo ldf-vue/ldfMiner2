@@ -47,6 +47,6 @@ export default {
     cursor: pointer;
   }
   .Switchlan .switch_btn.on {
-    color: #32c057;
+    color: #f8b600;
   }
 </style>

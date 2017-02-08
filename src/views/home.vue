@@ -103,7 +103,7 @@ export default {
   }
   .session {
     margin: 0 auto;
-    font-family: '微软雅黑';
+    /*font-family: '微软雅黑';*/
   }
   .session1 {
     width: 1100px;
@@ -209,8 +209,8 @@ export default {
     display: block;
     margin: 0 auto;
     font-size: 17px;
-    background-color: #32c057;
-    border: 1px solid #32c057;
+    background-color: #f8b600;
+    border: 1px solid #f8b600;
     color: #fff;
     height: 40px;
     line-height: 40px;
@@ -288,14 +288,14 @@ export default {
   }
   .session3 .featureList .uniqueFeature {
     font-size: 20px;
-    color: #32c057;
+    color: #f8b600;
     padding-top: 25px;
   }
 
   .session4 {
     width: 1100px;
     height: 505px;
-    background-color: #f9f9f9;
+    /*background-color: #f9f9f9;*/
     padding-top: 95px
   }
   .session4 .logo {
