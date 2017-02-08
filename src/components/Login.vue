@@ -17,7 +17,7 @@
           </el-form>
           <div slot="footer" class="dialog-footer">
             <el-button @click="registerBox = false">取 消</el-button>
-            <el-button type="primary" @click="register" :loading="loading">注 册</el-button>
+            <el-button type="warning" @click="register" :loading="loading">注 册</el-button>
           </div>
         </el-dialog>
       <!-- =====================登录========================= -->
@@ -33,7 +33,7 @@
           </el-form>
           <div slot="footer" class="dialog-footer">
             <el-button @click="loginBox = false">取 消</el-button>
-            <el-button type="primary" @click="login" :loading="loading">登 陆</el-button>
+            <el-button type="warning" @click="login" :loading="loading">登 陆</el-button>
           </div>
         </el-dialog>
     </div>
@@ -65,7 +65,7 @@ export default {
         password: '',
         passwordRepeat: ''
       },
-      formLabelWidth: '80px',
+      formLabelWidth: '70px',
       loading: false,
       loginBtn: false,
       userIfo: false
@@ -270,8 +270,8 @@ export default {
   }
   #regist_btn {
     background-color: #fff;
-    border: 1px solid #32c057;
-    color: #32c057;
+    border: 1px solid #f8b600;
+    color: #f8b600;
   }
   #login_btn {
     background-color: #fff;

@@ -66,7 +66,7 @@ export default {
 .pic_picked {
 	width: 84px;
 	height: 84px;
-	border: 2px solid #32c057;
+	border: 2px solid #f8b600;
 	overflow: hidden;
 }
 </style>

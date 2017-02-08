@@ -186,12 +186,13 @@ export default {
   left: -999px;
 }
 .choose_price {
-	border-color: #32c057;
+	border-color: #f8b600;
 }
 /*数量选择*/
 .num_btn {
   width: 58px;
   height: 38px;
+  line-height: 38px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 28px;
@@ -230,8 +231,8 @@ export default {
   height: 50px;
   line-height: 50px;
   font-size: 20px;
-  background-color: #32c057;
-  border: 1px solid #32c057;
+  background-color: #f8b600;
+  border: 1px solid #f8b600;
   color: #fff;
   border-radius: 4px;
   text-align: center;

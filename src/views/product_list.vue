@@ -16,7 +16,6 @@
               </div>
               <div class="price">
                   <p class="normalPrice">￥15,500.00</p>
-                  <p class="BTCPrice">（2.311 BTC）</p>
               </div>
               <router-link :to="{ path: 'product_detail/id=' + item.product_id }" class="btn btnBuy">立即购买</router-link>
             </li>
@@ -33,11 +32,11 @@ export default {
       msg: 'product_list.vue',
       items: [
         {
-          src: 'static/logo.png',
+          src: 'static/img/kj1.jpg',
           product_id: 1
         },
         {
-          src: 'static/logo.png',
+          src: 'static/img/AvalonMiner721.jpg',
           product_id: 2
         }
       ]
@@ -93,6 +92,7 @@ export default {
   }
   .price .normalPrice {
     font-size: 26px;
+    line-height: 70px
   }
   .price .BTCPrice {
     font-size: 14px;
@@ -107,14 +107,14 @@ export default {
     font-size: 16px;
     border-radius: 4px;
     text-align: center;
-    background-color: #32c057;
-    border: 1px solid #32c057;
+    background-color: #f8b600;
+    border: 1px solid #f8b600;
     color: #fff;
   }
   .btnBuy {
     position: absolute;
     right: 30px;
-    top: 95px;
+    top: 105px;
     width: 160px;
   }
 </style>

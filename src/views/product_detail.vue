@@ -116,11 +116,11 @@ export default {
   height: 53px;
 }
 .details_title {
-	color: #32c057;
+	color: #f8b600;
 	height: 50px;
   line-height: 50px;
   display: inline-block;
-  border-bottom: 3px solid #32c057;
+  border-bottom: 3px solid #f8b600;
 }
 .details_ifo {
 	margin: 40px 0 50px
