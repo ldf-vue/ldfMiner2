@@ -25,10 +25,10 @@
     </div>
     <img v-for='detailImage in detailImages' :src='detailImage.image' />
     <div class="sold_ifo">
-      <h4 class="soli_title">注意事项</h4>1. 机器变形或者部件脱落，请不要通电，联系售后处理。<br><br>2. 在安装或维护时请先装矿机断电，再进行维护。<br><br>3. 接线时一定要注意电源线的方向,接反会引起电源或矿机故障。<br><br>4. 注意防尘防潮，以免影响矿机正常工作。<br><br>5. 当电源的实际输出达不到矿机所需求时，算力会提升不上去。
+      <h4 class="soli_title">{{$t("detail.title1")}}</h4>{{$t("detail.content1_1")}}<br><br>{{$t("detail.content1_2")}}<br><br>{{$t("detail.content1_3")}}<br><br>{{$t("detail.content1_4")}}<br><br>{{$t("detail.content1_5")}}
     </div>
     <div class="sold_ifo">
-      <h4 class="soli_title">售后说明</h4>1）投资需谨慎，本显卡矿机一经售出，不支持退款或退货；<br>2）到货后180天内支持返修；<br>3）矿机价格可能会根据市场情况调整而不做事先通知和价格补偿，敬请谅解；<br><br><br>对于以下情况不支持返修：<br>1.买家私自拆卸，改装元器件；<br>2.在到货后，遭遇天气等自然灾害受损；<br>3.进水、电路板和元器件受潮、出现腐蚀造成的损坏；<br>4.买家另行购买劣质电源造成的损坏；<br>5.电路板存在毁痕迹的或者芯片被烧毁的；<br>6.一切由买家自行造成的损坏；<br><br><br>如果您有其他任何疑问可咨询：<br>电话: 18617127006
+      <h4 class="soli_title">{{$t("detail.title2")}}</h4>{{$t("detail.content2_1_1")}}<br>{{$t("detail.content2_1_2")}}<br>{{$t("detail.content2_1_3")}}<br><br><br>{{$t("detail.content2_2")}}<br>{{$t("detail.content2_2_1")}}<br>{{$t("detail.content2_2_2")}}<br>{{$t("detail.content2_2_3")}}<br>{{$t("detail.content2_2_4")}}<br>{{$t("detail.content2_2_5")}}<br>{{$t("detail.content2_2_6")}}<br><br><br>{{$t("detail.content2_3_1")}}<br>{{$t("detail.content2_3_2")}}
     </div>
   </div>
 </div>
@@ -37,6 +37,50 @@
 <script>
 import left from '../components/product_detail_pic.vue'
 import right from '../components/product_detail_text.vue'
+import { locales } from '../assets/js/lan-packs.js'
+
+locales.en.detail = {
+  title1: 'Attention',
+  content1_1: '1. Contact us if you see a deformed or moved card. Don’t turn on the machine.',
+  content1_2: '2. Make sure the miner is turned down before any maintenance or repairs.',
+  content1_3: '3. Power line is recommended to avoid power or miner failure.',
+  content1_4: '4. Dust and moisture may affect the functioning of miners.',
+  content1_5: '5. Miners may not be able to run with full hashrates if the power supply is lower than required.',
+  title2: 'After-sales Service',
+  content2_1_1: '1）Please understand once the miner is sold, a refund or return is not available;',
+  content2_1_2: '2）We provide a 180 days warranty period; ',
+  content2_1_3: '3）Miner prices may be adjusted according to market fluctuations without prior notice or compensation;',
+  content2_2: 'Warranty doesn’t apply to the following cases:',
+  content2_2_1: '1. Customers demolish or modify components;',
+  content2_2_2: '2. Miners suffer bad weather or other natural disasters after arrival;',
+  content2_2_3: '3. Corrosion led by exposed circuit boards or components to water and moisture;',
+  content2_2_4: '4. Damage led by low-quality power supply;',
+  content2_2_5: '5. Burned circuit board or chips;',
+  content2_2_6: '6. Other damages caused by customers themselves;',
+  content2_3_1: 'If you have any other questions, please contact:',
+  content2_3_2: 'TEL: +86 18617127006'
+}
+locales.cn.detail = {
+  title1: '注意事项',
+  content1_1: '1. 机器变形或者部件脱落，请不要通电，联系售后处理。',
+  content1_2: '2. 在安装或维护时请先装矿机断电，再进行维护。',
+  content1_3: '3. 接线时一定要注意电源线的方向,接反会引起电源或矿机故障。',
+  content1_4: '4. 注意防尘防潮，以免影响矿机正常工作。',
+  content1_5: '5. 当电源的实际输出达不到矿机所需求时，算力会提升不上去。',
+  title2: '售后说明',
+  content2_1_1: '1）投资需谨慎，本显卡矿机一经售出，不支持退款或退货；',
+  content2_1_2: '2）到货后180天内支持返修；',
+  content2_1_3: '3）矿机价格可能会根据市场情况调整而不做事先通知和价格补偿，敬请谅解；',
+  content2_2: '1.买家私自拆卸，改装元器件；',
+  content2_2_1: '1.买家私自拆卸，改装元器件；',
+  content2_2_2: '2.在到货后，遭遇天气等自然灾害受损；',
+  content2_2_3: '3.进水、电路板和元器件受潮、出现腐蚀造成的损坏；',
+  content2_2_4: '4.买家购买劣质电源造成的损坏；',
+  content2_2_5: '5.电路板存在毁痕迹的或者芯片被烧毁的；',
+  content2_2_6: '6.一切由买家自行造成的损坏；',
+  content2_3_1: '如果您有其他任何疑问可咨询：',
+  content2_3_2: '电话: 18617127006'
+}
 
 export default {
   name: 'product_detail',

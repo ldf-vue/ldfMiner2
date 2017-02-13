@@ -1,20 +1,31 @@
 <template>
     <div class="home">
       <div class="session session1">
-        <router-link :to="{ path: 'product_detail/id' }">
+        <el-carousel :interval="3000" indicator-position='none' height="550px">
+          <el-carousel-item v-for="item in 4">
+            <router-link :to="{ path: 'product_detail/id' }">
+              <h1>{{ $t("homeContent.session1.title") }}</h1>
+              <h3>{{ $t("homeContent.session1.subTitle") }}</h3>
+              <span class="learn_more">{{ $t("homeContent.session1.lernMore") }}</span>
+              <br />
+              <img src="static/img/AvalonMiner721.jpg">
+            </router-link>
+          </el-carousel-item>
+        </el-carousel>
+        <!-- <router-link :to="{ path: 'product_detail/id' }">
           <h1>{{ $t("homeContent.session1.title") }}</h1>
           <h3>{{ $t("homeContent.session1.subTitle") }}</h3>
           <span class="learn_more">{{ $t("homeContent.session1.lernMore") }}</span>
           <br />
           <img src="../assets/logo.png">
-        </router-link>
+        </router-link> -->
       </div>
       <div class="session session2">
         <h2>{{ $t("homeContent.session2.title") }}</h2>
         <ul>
           <li v-for="item in items">
             <router-link :to="{ path: 'product_detail/id' }">
-              <img src="../assets/logo.png" alt="" class="productImg">
+              <img :src="item.image" alt="" class="productImg">
             </router-link>
             <p class="productName">PandaMiner B1 Plus</p>
             <p class="productSlogan">性价比之选</p>
@@ -51,7 +62,8 @@
               <p class="feature">更短回本周期，全网算力攀升较缓和<br>可适用于多种虚拟加密货币算法</p>
             </li>
             <li class="featureItem">
-              <p class="uniqueFeature">高性价比，极低部署成本！</p>
+              <p class="compare">&nbsp;</p>
+              <p class="feature">高性价比，极低部署成本！</p>
             </li>
           </ul>
         </div>
@@ -77,10 +89,12 @@ export default {
       msg: 'home.vue',
       items: [
         {
+          image: 'static/img/AvalonMiner721.jpg',
           money: '￥15,000.00',
           comingSoon: false
         },
         {
+          image: 'static/img/kj1.jpg',
           money: '即将上市',
           comingSoon: true
         }
@@ -181,7 +195,7 @@ export default {
   .session2 li img {
     display: block;
     margin: 0 auto 15px;
-    width: 386px;
+    width: 280px;
     height: 196px;
   }
   .session2 .productName {
@@ -301,12 +315,12 @@ export default {
   .session4 .logo {
     background-image: url(../assets/logo.png);
     background-repeat: no-repeat;
-    background-color: yellowgreen;
-    width: 308px;
-    height: 144px;
-    margin: 0 auto;
+    background-size: 100%;
+    /*background-color: yellowgreen;*/
+    width: 200px;
+    height: 160px;
     text-indent: -9999px;
-    margin-bottom: 50px;
+    margin: -50px auto 30px;
   }
   .session4 .content {
     width: 1000px;

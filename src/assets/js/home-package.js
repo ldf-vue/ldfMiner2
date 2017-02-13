@@ -7,7 +7,7 @@ locales.en.homeContent = {
     lernMore: 'Learn More'
   },
   session2: {
-    title: 'Buy Now',
+    title: 'Hot Products',
     subTitle: '支持多币种挖矿 正式发售限量100台',
     lernMore: '了解更多'
   }
@@ -19,7 +19,7 @@ locales.cn.homeContent = {
     lernMore: '了解更多'
   },
   session2: {
-    title: '立即购买',
+    title: '热门产品',
     subTitle: '支持多币种挖矿 正式发售限量100台',
     lernMore: '了解更多'
   }
