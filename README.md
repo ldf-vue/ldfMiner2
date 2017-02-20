@@ -230,6 +230,16 @@ Vue.http.options.emulateJSON = true
 
 element-ui下拉菜单选项回调需使用command，不能使用click，并且需要在头部dropdown说明：@command=‘handleCommand’（详细参见文档）
 
+Element和Jquery冲突
+
+#### 数据对接问题
+
+在中英文切换中使用watch监控$lang设置索引为0 or 1，从而对['中文','English']类似的数据进行国际化，从中发现问题：
+
+a[0]类似数据只能使用一层，两层会报错 eg：a[0].b[0]会报错
+
+
+
 **home.vue 中的 background 图片背景问题
 
 

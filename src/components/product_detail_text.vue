@@ -1,29 +1,28 @@
 <template>
 <div class="right">
 	<p class="product_name">
-	  {{detailText.name}}
-	  <span class="product_hot" v-show='detailText.hot'>热门</span>
+	  {{detailText.name[i]}}
+	  <span class="product_hot" v-show='detailText.hot'>{{$t("detail.hot")}}</span>
 	</p>
 	<p class="product_ifo">
-	  {{detailText.ifo}}
+	  {{detailText.ifo[i]}}
 	</p>
 	<p class="product_price">
-	  价格：
-	  <span class="price_rmb">¥ {{detailText.prices[pick_price].rmb}}</span>
-<!-- 	  <span class="price_bitcoin">( {{detailText.prices[pick_price].btc}} BTC )</span> -->
+	  {{$t("detail.price")}}：
+	  <span class="price_rmb">¥ {{detailText.prices[pick_price].price}}</span>
 	</p>
 	<!-- 规格 -->
 	<div class="product_choose">
-		<p class="product_choose_text">产品规格</p>
+		<p class="product_choose_text">{{$t("detail.standard")}}</p>
     <!-- 这里采用左侧图片的处理方法 用选中的索引值去渲染价格数据 -->
 		<label v-for='(price,index) in detailText.prices' :id='index' class='product_btn' :class="{'choose_price':index==pick_price}">
 		  <input :value='index' type='radio' class='product_btn_input' v-model='pick_price'/>
-			<span>{{price.name}}</span>
+			<span>{{price.standard}}</span>
 		</label>
 	</div>
 	<!-- 数量 -->
 	<div class="product_choose">
-		<p class="product_choose_text">台数</p>
+		<p class="product_choose_text">{{$t("detail.num")}}</p>
     <!-- 减少 -->
 		<span class="num_btn" @click='minus'>-</span>
 		<div class="choose_num_border">
@@ -32,7 +31,7 @@
     <!-- 增加 -->
 		<span class="num_btn" @click='add'>+</span>
 	</div>
-	<span class="buy_btn" @click='buy'>立即购买</span>
+	<span class="buy_btn" @click='buy'>{{$t("detail.buy")}}</span>
 </div>
 </template>
 
@@ -44,12 +43,30 @@ Vue.component(MessageBox)
 
 export default {
   name: 'right',
+  mounted: function () {
+    if (this.$lang === 'cn') {
+      this.i = 0
+    } else {
+      this.i = 1
+    }
+  },
   data () {
     return {
-      pick_price: '0'
+      i: 0,
+      pick_price: 0
     }
   },
   props: ['detailText'],
+  watch: {
+    $lang: function () {
+      var lang = this.$lang
+      if (lang === 'cn') {
+        this.i = 0
+      } else {
+        this.i = 1
+      }
+    }
+  },
   methods: {
     add: function () {
       this.detailText.productNum++

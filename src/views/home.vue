@@ -3,7 +3,7 @@
       <div class="session session1">
         <el-carousel :interval="3000" indicator-position='none' height="550px">
           <el-carousel-item v-for="item in 4">
-            <router-link :to="{ path: 'product_detail/id' }">
+            <router-link :to="{ path: '#' }">
               <h1>{{ $t("homeContent.session1.title") }}</h1>
               <h3>{{ $t("homeContent.session1.subTitle") }}</h3>
               <span class="learn_more">{{ $t("homeContent.session1.lernMore") }}</span>
@@ -24,21 +24,21 @@
         <h2>{{ $t("homeContent.session2.title") }}</h2>
         <ul>
           <li v-for="item in items">
-            <router-link :to="{ path: 'product_detail/id' }">
+            <router-link :to="{ path: 'product_detail/' + item.id}">
               <img :src="item.image" alt="" class="productImg">
             </router-link>
-            <p class="productName">PandaMiner B1 Plus</p>
-            <p class="productSlogan">性价比之选</p>
-            <table class="productParamTable">
+            <p class="productName">{{item.title}}</p>
+            <p class="productSlogan">{{item.keywords}}</p>
+            <!-- <table class="productParamTable">
               <tbody>
                 <tr>
                   <td>显卡数量：8</td>
                   <td>核心显卡：RX480</td>
                 </tr>
               </tbody>
-            </table>
+            </table> -->
             <a href="javascript:void(0)" v-if="item.comingSoon" class="btn buyNow" :class="{'noComing':item.comingSoon}">{{ item.money }}</a>
-            <router-link :to="{ path: 'product_detail/id' }" v-else class="btn buyNow" :class="{'noComing':item.comingSoon}">{{ item.money }}</a>
+            <router-link :to="{ path: 'product_detail/' + item.id}" v-else class="btn buyNow" :class="{'noComing':item.comingSoon}">{{ item.money }}</a>
           </li>
         </ul>
         <router-link :to="{ path: 'product_list' }" class="btnMoreProduct">了解更多商品</a>
@@ -84,21 +84,60 @@ import '../assets/js/home-package.js'
 
 export default {
   name: 'app',
+  mounted: function () {
+    if (this.$lang === 'cn') {
+      this.i = 0
+    } else {
+      this.i = 1
+    }
+    this.$http({
+      method: 'GET',
+      url: 'http://www.lingyun.party/app1/getHots'
+    }).then(function (response) {
+      this.items[0].id = response.body[0]._id
+      this.items[1].id = response.body[1]._id
+      this.items[0].image = response.body[0].pics[0]
+      this.items[1].image = response.body[1].pics[0]
+      this.items[0].title = response.body[0].title[this.i]
+      this.items[1].title = response.body[1].title[this.i]
+      this.items[0].keywords = response.body[0].keywords[this.i]
+      this.items[1].keywords = response.body[1].keywords[this.i]
+      this.items[0].money = response.body[0].prices[0].price[0]
+      this.items[1].money = response.body[1].prices[0].price[0]
+    }, function (response) {
+      console.log(111111111)
+    })
+  },
   data () {
     return {
       msg: 'home.vue',
       items: [
         {
-          image: 'static/img/AvalonMiner721.jpg',
-          money: '￥15,000.00',
-          comingSoon: false
+          id: '',
+          title: '',
+          keywords: '',
+          image: '',
+          money: ''
         },
         {
-          image: 'static/img/kj1.jpg',
-          money: '即将上市',
-          comingSoon: true
+          id: '',
+          title: '',
+          keywords: '',
+          image: '',
+          money: ''
         }
-      ]
+      ],
+      i: 0
+    }
+  },
+  watch: {
+    $lang: function () {
+      var lang = this.$lang
+      if (lang === 'cn') {
+        this.i = 0
+      } else {
+        this.i = 1
+      }
     }
   }
 }
@@ -206,6 +245,9 @@ export default {
   .session2 .productSlogan {
     font-size: 16px;
     color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .session2 .productParamTable {
     width: 100%;
@@ -221,7 +263,7 @@ export default {
   .session2 .buyNow {
     width: 160px;
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
     font-size: 17px;
     background-color: #f8b600;
     border: 1px solid #f8b600;

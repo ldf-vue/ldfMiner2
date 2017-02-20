@@ -6,18 +6,17 @@
         <div class="products">
           <ul>
             <li class="productItem" v-for="item in items">
-              <img :src="item.src" class="productImg">
+              <img :src="item.pics[0]" class="productImg">
               <div class="productInfo">
-                  <p class="productName">ldfMiner B1 Plus</p>
+                  <p class="productName">{{item.title[index]}}</p>
                   <p class="productParams">
-                    <span class="param">显卡数量：8</span>
-                    <span class="param">核心显卡：RX480</span>
+                    <span class="param">{{item.keywords[index]}}</span>
                   </p>
               </div>
               <div class="price">
-                  <p class="normalPrice">￥15,500.00</p>
+                  <p class="normalPrice">￥{{item.prices[0].price[0]}}</p>
               </div>
-              <router-link :to="{ path: 'product_detail/id=' + item.product_id }" class="btn btnBuy">立即购买</router-link>
+              <router-link :to="{ path: 'product_detail/' + item._id }" class="btn btnBuy">{{ $t("product_list.buy") }}</router-link>
             </li>
           </ul>
         </div>
@@ -25,21 +24,45 @@
 </template>
 
 <script>
+import { locales } from '../assets/js/lan-packs.js'
+
+locales.en.product_list = {
+  buy: 'Buy Now'
+}
+locales.cn.product_list = {
+  buy: '立即购买'
+}
+
 export default {
   name: 'product_list',
+  mounted: function () {
+    this.$http({
+      method: 'GET',
+      url: 'http://www.lingyun.party/app1/getLists'
+    }).then(function (response) {
+      this.items = response.body
+    }, function (response) {
+      console.log(111111111)
+    })
+    if (this.$lang === 'cn') {
+      this.index = 0
+    } else {
+      this.index = 1
+    }
+  },
   data () {
     return {
-      msg: 'product_list.vue',
-      items: [
-        {
-          src: 'static/img/kj1.jpg',
-          product_id: 1
-        },
-        {
-          src: 'static/img/AvalonMiner721.jpg',
-          product_id: 2
-        }
-      ]
+      index: 0,
+      items: []
+    }
+  },
+  watch: {
+    $lang: function () {
+      if (this.$lang === 'cn') {
+        this.index = 0
+      } else {
+        this.index = 1
+      }
     }
   }
 }

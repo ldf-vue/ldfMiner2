@@ -2,14 +2,14 @@
 	<div class="left">
 	<!-- 大图 -->
 		<div class="left_large">
-			<img class="large_pic" :src='detailPics[pick_pic].url'>
+			<img class="large_pic" :src='detailPics[pick_pic]'>
 		</div>
 		<!-- 小图 -->
 		<div class="left_small">
 		<!-- 使用表单单选处理 -->
 			<label v-for='(detailPic,index) in detailPics' :id='index' class='small_pic' :class="{'pic_picked':index==pick_pic}">
 			  <input :value='index' type='radio' class='small_pic_input' v-model='pick_pic'/>
-				<img :src='detailPic.url' class="small_pic_img">
+				<img :src='detailPic' class="small_pic_img">
 			</label>
 		</div>
 	</div>
