@@ -210,7 +210,6 @@ export default {
       url: 'http://www.lingyun.party/app1/getDetails?id=' + data,
       method: 'GET'
     }).then(function (response) {
-      console.log(response.body)
       this.body = response.body
       this.detailPics = response.body.pics
       this.detailText.name = response.body.title
