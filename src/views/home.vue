@@ -28,15 +28,7 @@
               <img :src="item.image" alt="" class="productImg">
             </router-link>
             <p class="productName">{{item.title}}</p>
-            <p class="productSlogan">{{item.keywords}}</p>
-            <!-- <table class="productParamTable">
-              <tbody>
-                <tr>
-                  <td>显卡数量：8</td>
-                  <td>核心显卡：RX480</td>
-                </tr>
-              </tbody>
-            </table> -->
+            <p class="productSlogan"> {{item.keywords}}</p>
             <a href="javascript:void(0)" v-if="item.comingSoon" class="btn buyNow" :class="{'noComing':item.comingSoon}">{{ item.money }}</a>
             <router-link :to="{ path: 'product_detail/' + item.id}" v-else class="btn buyNow" :class="{'noComing':item.comingSoon}">{{ item.money }}</a>
           </li>
@@ -94,16 +86,25 @@ export default {
       method: 'GET',
       url: 'http://www.lingyun.party/app1/getHots'
     }).then(function (response) {
-      this.items[0].id = response.body[0]._id
-      this.items[1].id = response.body[1]._id
-      this.items[0].image = response.body[0].pics[0]
-      this.items[1].image = response.body[1].pics[0]
-      this.items[0].title = response.body[0].title[this.i]
-      this.items[1].title = response.body[1].title[this.i]
-      this.items[0].keywords = response.body[0].keywords[this.i]
-      this.items[1].keywords = response.body[1].keywords[this.i]
-      this.items[0].money = response.body[0].prices[0].price[0]
-      this.items[1].money = response.body[1].prices[0].price[0]
+      var l = response.body.length;
+      (l === 1) ? this.items = [{id: '', title: '', keywords: '', image: '', money: ''}] : this.items
+      for (var n = 0; n < l; n++) {
+        this.items[n].id = response.body[n]._id
+        this.items[n].image = response.body[n].pics[n]
+        this.items[n].title = response.body[n].title[this.i]
+        this.items[n].keywords = response.body[n].keywords[this.i]
+        this.items[n].money = response.body[n].prices[n].price[n]
+      }
+      // this.items[0].id = response.body[0]._id
+      // this.items[1].id = response.body[1]._id
+      // this.items[0].image = response.body[0].pics[0]
+      // this.items[1].image = response.body[1].pics[0]
+      // this.items[0].title = response.body[0].title[this.i]
+      // this.items[1].title = response.body[1].title[this.i]
+      // this.items[0].keywords = response.body[0].keywords[this.i]
+      // this.items[1].keywords = response.body[1].keywords[this.i]
+      // this.items[0].money = response.body[0].prices[0].price[0]
+      // this.items[1].money = response.body[1].prices[0].price[0]
     }, function (response) {
       console.log(111111111)
     })
