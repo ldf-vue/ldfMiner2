@@ -31,7 +31,25 @@
     <!-- 增加 -->
 		<span class="num_btn" @click='add'>+</span>
 	</div>
-	<span class="buy_btn" @click='buy'>{{$t("detail.buy")}}</span>
+	<span class="buy_btn" @click='buy'>{{$t("detail.buy")}}
+    <el-dialog title='在线留言' v-model='msgBox' size='tiny'>
+          <el-form>
+            <el-input
+              type="textarea"
+              :rows="3"
+              placeholder="请再此输入您的留言（必填）"
+              v-model="msg">
+            </el-input>
+            <el-input v-model="name" placeholder="姓名" class="msg_input"></el-input>
+            <el-input v-model="phone" placeholder="电话（必填）" class="msg_input" type="tel"></el-input>
+            <el-input v-model="email" placeholder="邮箱" class="msg_input" type="email"></el-input>
+          </el-form>
+          <div slot="footer" class="dialog-footer">
+            <el-button @click="msgBox = false">取 消</el-button>
+            <el-button type="warning" @click="msgSend" :loading="input">提 交</el-button>
+          </div>
+        </el-dialog>
+  </span>
 </div>
 </template>
 
