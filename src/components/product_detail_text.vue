@@ -32,7 +32,7 @@
 		<span class="num_btn" @click='add'>+</span>
 	</div>
 	<span class="buy_btn" @click='buy'>{{$t("detail.buy")}}
-    <el-dialog title='在线留言' v-model='msgBox' size='tiny'>
+    <!-- <el-dialog title='在线留言' v-model='msgBox' size='tiny'>
           <el-form>
             <el-input
               type="textarea"
@@ -48,7 +48,7 @@
             <el-button @click="msgBox = false">取 消</el-button>
             <el-button type="warning" @click="msgSend" :loading="input">提 交</el-button>
           </div>
-        </el-dialog>
+        </el-dialog> -->
   </span>
 </div>
 </template>
@@ -56,6 +56,7 @@
 <script>
 import Vue from 'vue'
 import {MessageBox} from 'element-ui'
+import store from '../vuex.js'
 
 Vue.component(MessageBox)
 
@@ -92,42 +93,8 @@ export default {
     minus: function () {
       this.detailText.productNum > 1 ? this.detailText.productNum-- : this.detailText.productNum
     },
-    // 弹窗使用element-ui MessageBox
-    buy: function () {
-      console.log(this)
-      this.$prompt('咨询购买请联系我们，联系电话：1234567890。或者在下方给我们留言并注明您的联系方式，我们将竭诚为您服务！', '联系我们', {
-        showCancelButton: true,
-        cancelButtonText: '关闭',
-        confirmButtonText: '提交',
-        inputValidator: function ({value}) {}
-      }).then(({ value }) => {
-        this.$http({
-          url: 'http://www.lingyun.party/app1/addmsg',
-          method: 'POST',
-          body: {
-            msg: value,
-            phone: ''
-          },
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        }).then(function (response) {
-          console.log(response.data)
-          // 提交成功提醒
-          this.$notify({
-            title: '提交成功',
-            message: '您的留言已提交成功，我们会尽快查看并处理',
-            type: 'success'
-          })
-        }, function (response) {
-          console.log(response.data)
-          // 提交失败提醒
-          this.$notify.error({
-            title: '提交失败',
-            message: '我们对此表示歉意，请检查您的网络或稍后再试'
-          })
-        })
-      })
+    buy: function() {
+      store.commit('open')
     },
     // 检查台数合法性
     checkInput: function () {

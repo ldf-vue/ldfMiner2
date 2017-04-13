@@ -3,7 +3,7 @@
     <div class="navWrap">
       <!-- 此处跳转，之前是用了a标签的href属性，发现打包后出现了问题，不能正常跳转，所以换为router-link -->
       <router-link :to="{ name: 'home' }">
-        <img src="../assets/logo.png" class="logoImg">
+        <img require="../assets/logo.png" class="logoImg">
       </router-link>
       <ul>
         <li v-for="item in items" class="navItem">

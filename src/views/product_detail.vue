@@ -207,7 +207,7 @@ export default {
     }
     var data = this.$route.params.id
     this.$http({
-      url: 'http://www.lingyun.party/app1/getDetails?id=' + data,
+      url: 'http://www.fengchaosuanli.com/app1/getDetails?id=' + data,
       method: 'GET'
     }).then(function (response) {
       this.body = response.body

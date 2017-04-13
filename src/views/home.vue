@@ -84,7 +84,7 @@ export default {
     }
     this.$http({
       method: 'GET',
-      url: 'http://www.lingyun.party/app1/getHots'
+      url: 'http://www.fengchaosuanli.com/app1/getHots'
     }).then(function (response) {
       var l = response.body.length;
       (l === 1) ? this.items = [{id: '', title: '', keywords: '', image: '', money: ''}] : this.items

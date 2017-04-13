@@ -6,12 +6,18 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    lan: window.localStorage.getItem('lan') || 'cn'
+    lan: window.localStorage.getItem('lan') || 'cn',
+    icon: false,
+    msgBox: false
   },
   mutations: {
     increment (state, type) {
       state.lan = type
       window.localStorage.setItem('lan', type)
+    },
+    open (state) {
+    	state.icon = !state.icon
+    	state.msgBox = !state.msgBox
     }
   }
 })

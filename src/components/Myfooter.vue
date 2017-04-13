@@ -62,7 +62,7 @@
         <!-- 悬浮 -->
         <div class="leaveMsg">
           <span class="leaveMsgBtn" @click='openMsgBox'>在<br>线<br>留<br>言</span>
-          <el-dialog title='在线留言' v-model='msgBox' size='tiny'>
+          <el-dialog title='在线留言' v-model='msgBox' size='tiny' :close-on-click-modal='false' :close-on-press-escape='false' :show-close='false'>
           <el-form>
             <el-input
               type="textarea"
@@ -75,7 +75,7 @@
             <el-input v-model="email" placeholder="邮箱" class="msg_input" type="email"></el-input>
           </el-form>
           <div slot="footer" class="dialog-footer">
-            <el-button @click="msgBox = false">取 消</el-button>
+            <el-button @click="openMsgBox">取 消</el-button>
             <el-button type="warning" @click="msgSend" :loading="input">提 交</el-button>
           </div>
         </el-dialog>
@@ -87,6 +87,7 @@
 
 <script>
 import Switchlan from './Switchlan'
+import store from '../vuex.js'
 
 export default {
   name: 'Myfooter',
@@ -96,19 +97,29 @@ export default {
       name: '',
       phone: '',
       email: '',
-      icon: false,
-      msgBox: false,
-      input: false
+      input: false,
+      false: false
     }
   },
   components: { Switchlan },
+  computed: {
+    msgBox: function () {
+      return store.state.msgBox
+    },
+    icon: function () {
+      return store.state.icon
+    }
+  },
   methods: {
+    close: function () {
+      store.commit('open')
+    },
     msgSend: function () {
       if (this.msg) {
         if (this.phone) {
           this.input = true
           this.$http({
-            url: 'http://www.lingyun.party/app1/addmsg',
+            url: 'http://www.fengchaosuanli.com/app1/addmsg',
             method: 'POST',
             body: {
               msg: this.msg,
@@ -132,9 +143,8 @@ export default {
               this.name = ''
               this.phone = ''
               this.email = ''
-              this.icon = false
-              this.msgBox = false
               this.input = false
+              store.commit('open')
             } else {
               this.$notify.error({
                 title: '提交失败',
@@ -168,9 +178,8 @@ export default {
       }
     },
     openMsgBox: function () {
-      console.log(this.icon)
-      this.icon = !this.icon
-      this.msgBox = !this.msgBox
+      store.commit('open')
+      console.log(store.state.icon)
     }
   }
 }

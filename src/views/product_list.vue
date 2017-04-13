@@ -38,7 +38,7 @@ export default {
   mounted: function () {
     this.$http({
       method: 'GET',
-      url: 'http://www.lingyun.party/app1/getLists'
+      url: 'http://www.fengchaosuanli.com/app1/getLists'
     }).then(function (response) {
       this.items = response.body
     }, function (response) {
